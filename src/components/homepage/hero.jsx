@@ -12,24 +12,12 @@ class HeroCarousel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nowPlayingMovies: [],
-      load: false,
+    
+      load: true,
     };
-    this.apiKey = this.apiKey = process.env.REACT_APP_API;
+
   }
 
-  componentDidMount() {
-    fetch(
-      `
-      https://api.themoviedb.org/3/movie/now_playing?api_key=${this.apiKey}&language=en-US&page=1
-      `
-    )
-      .then((data) => data.json())
-      .then((data) => {
-        this.setState({ nowPlayingMovies: [...data.results] });
-        this.setState({ load: true });
-      });
-  }
 
   render() {
     const settings = {
@@ -44,6 +32,8 @@ class HeroCarousel extends Component {
       prevArrow: <Arrow />,
     };
 
+
+
     return (
       <div
         className="heroCarousel"
@@ -56,7 +46,7 @@ class HeroCarousel extends Component {
         }
       >
         <Slider {...settings}>
-          {this.state.nowPlayingMovies.map(
+          {this.props.marqueeData?.map(
             (movie, index) => (
               <div className="heroContainer" key={index}>
                 <div className="someImage">
