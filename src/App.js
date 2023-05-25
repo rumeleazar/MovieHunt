@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './index.css';
 import Navigation from './components/NavBar/navbar';
@@ -8,94 +8,78 @@ import Footer from './components/homepage/footer';
 import PersonInfo from './components/Informations/personInfo';
 import HomePage from './Pages/HomePage';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      load: false,
-      searchedMovies: [],
-      search: '',
-    };
-    this.apiKey = process.env.REACT_APP_API;
-  }
+const App = () => {
+  const [load, setLoad] = useState(false);
+  const [searchMovies, setSearchMovies] = useState([]);
+  const [search, setSearch] = useState('');
 
-  componentDidMount() {
-    window.addEventListener('load', () => {
-      this.setState({ load: true });
-    });
-  }
-  componentWillUnmount() {
-    window.removeEventListener('load');
-  }
+  useEffect(() => {
+    setLoad(true);
+  }, []);
 
   //BUTTON FUNCTIONS
-  handleChange = (e) => {
-    this.setState({ search: e.target.value });
+  const handleChange = (e) => {
+    setSearch({ search: e.target.value });
   };
 
-  handleSearch = (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
-    if (this.state.search !== '') {
+    if (search !== '') {
       fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.state.search}
         `,
       )
         .then((data) => data.json())
         .then((data) => {
-          this.setState({ searchedMovies: [...data.results] });
+          setSearchMovies({ searchedMovies: [...data.results] });
         });
     }
   };
 
-  render() {
-    return (
-      <BrowserRouter>
-        <div
-          className="preloader"
-          style={this.state.load ? { opacity: 0 } : { opacity: 1 }}
-        ></div>
-        <div
-          className="document"
-          style={this.state.load ? { opacity: 1 } : { opacity: 0 }}
-        >
-          <Switch>
-            <Route
-              path="/"
-              exact
-              render={(props) => (
-                <Fragment>
-                  <Navigation
-                    handleSearch={this.handleSearch}
-                    handleChange={this.handleChange}
-                    search={this.state.search}
-                  />
-                  <HomePage />
-                  <Footer />
-                </Fragment>
-              )}
-            />
-            <Route
-              path="/search/:searchtitle"
-              exact
-              render={(props) => (
-                <Fragment>
-                  <SearchResult
-                    handleSearch={this.handleSearch}
-                    handleChange={this.handleChange}
-                    movies={this.state.searchedMovies}
-                    search={this.state.search}
-                  />
-                </Fragment>
-              )}
-            />
-            <Route path="/details/:movietitle/:movieid" component={MovieInfo} />
-            <Route path="/people/:peopleid" component={PersonInfo} />
-            <Route path="/newHome" component={HomePage} />
-          </Switch>
-        </div>
-      </BrowserRouter>
-    );
-  }
-}
+  return (
+    <BrowserRouter>
+      <div
+        className="preloader"
+        style={load ? { opacity: 0 } : { opacity: 1 }}
+      ></div>
+      <div className="document" style={load ? { opacity: 1 } : { opacity: 0 }}>
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={(props) => (
+              <Fragment>
+                <Navigation
+                  handleSearch={handleSearch}
+                  handleChange={handleChange}
+                  search={search}
+                />
+                <HomePage />
+                <Footer />
+              </Fragment>
+            )}
+          />
+          <Route
+            path="/search/:searchtitle"
+            exact
+            render={(props) => (
+              <Fragment>
+                <SearchResult
+                  handleSearch={handleSearch}
+                  handleChange={handleChange}
+                  movies={searchMovies}
+                  search={search}
+                />
+              </Fragment>
+            )}
+          />
+          <Route path="/details/:movietitle/:movieid" component={MovieInfo} />
+          <Route path="/people/:peopleid" component={PersonInfo} />
+          <Route path="/newHome" component={HomePage} />
+        </Switch>
+      </div>
+    </BrowserRouter>
+  );
+};
 
 export default App;
