@@ -26,68 +26,6 @@ textarea:focus {
   display: none;
 }
 
-.preloader {
-  display: block;
-  width: 100px;
-  height: 30px;
-  border: none;
-  overflow: hidden;
-  position: fixed;
-  top: 50%;
-  left: 47%;
-  right: 50%;
-  border-radius: 5px;
-  box-shadow: 0px 35px 0 -5px #ccc, 0 -5px 0 0px #780000, 0 -25px 0 -5px #ccc,
-    -25px -30px 0 0px #780000, -25px 30px 0 0px #780000,
-    25px -30px 0 0px #780000, 25px 30px 0 0px #780000, 20px 10px 0 5px #780000,
-    20px -10px 0 5px #780000, -20px -10px 0 5px #780000,
-    -20px 10px 0 5px #780000;
-  animation: tape2 1.5s linear infinite alternate;
-}
-
-.preloader:after,
-.preloader:before {
-  content: "";
-  border-radius: 100%;
-  width: 38px;
-  height: 38px;
-  display: block;
-  position: absolute;
-  border: 5px dashed #fff;
-  margin: -9px auto;
-  top: 0;
-  bottom: 0;
-  transform: rotate(0deg) scale(0.4);
-  animation: tape 4s linear infinite;
-}
-
-.preloader:after {
-  left: -10px;
-  box-shadow: 0 0 0 4px #fff, 0 0 0 65px #000;
-}
-.preloader:before {
-  right: -10px;
-  box-shadow: 0 0 0 4px #fff, 0 0 0 35px #000;
-}
-
-@keyframes tape {
-  0% {
-    transform: rotate(0deg) scale(0.4);
-  }
-  100% {
-    transform: rotate(-360deg) scale(0.4);
-  }
-}
-
-@keyframes tape2 {
-  0% {
-    transform: perspective(500px) rotateX(0deg) rotateY(-20deg) rotateZ(0deg);
-  }
-  100% {
-    transform: perspective(500px) rotateX(0deg) rotateY(20deg) rotateZ(0deg);
-  }
-}
-
 .footer {
   position: relative;
   margin: auto;
@@ -305,7 +243,7 @@ a {
   margin: auto;
   text-align: center;
   position: relative;
-  opacity: 0;
+  opacity: 1;
   transition: 1s;
 }
 
@@ -315,7 +253,7 @@ a {
   text-align: center;
   text-transform: uppercase;
   margin-top: 100px;
-  opacity: 0;
+  opacity: 1;
   transition: 1s;
 }
 

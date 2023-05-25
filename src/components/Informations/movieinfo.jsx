@@ -4,6 +4,7 @@ import Footer from "../homepage/footer";
 import Navigation from "../NavBar/navbar";
 import ReactImageFallback from "react-image-fallback";
 import noimage from "../../assets/images/noimage.png";
+import { setLoadingIndicatorVisibility } from "../Loader/Loader";
 
 class MovieInfo extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class MovieInfo extends Component {
 
     window.addEventListener("load", () => {
       this.setState({ load: true });
+      setLoadingIndicatorVisibility(false);
     });
   }
 
@@ -149,7 +151,7 @@ class MovieInfo extends Component {
                     rel="noopener noreferrer"
                     target="_blank"
                   >
-                    See full review >>
+                    See full review
                   </a>
                 </h2>
               </div>

@@ -3,10 +3,13 @@ import { withRouter } from "react-router-dom";
 import searchicon from "../../assets/images/searchicon.png";
 
 function SearchBar(props) {
+
   function ButtonRedirect() {
-    if (props.search !== "") {
+
+    if (props.search.search !== "") {
+
       setTimeout(function () {
-        props.history.push(`/search/${props.search}`);
+        props.history.push(`/search/${props.search.search}`);  
       }, 100);
     } else {
       props.history.replace(window.location.pathname);

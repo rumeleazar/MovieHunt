@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './index.css';
 import Navigation from './components/NavBar/navbar';
@@ -7,15 +7,11 @@ import MovieInfo from './components/Informations/movieinfo';
 import Footer from './components/homepage/footer';
 import PersonInfo from './components/Informations/personInfo';
 import HomePage from './Pages/HomePage';
+import LoadingSpinner from './components/Loader/Loader';
 
 const App = () => {
-  const [load, setLoad] = useState(false);
   const [searchMovies, setSearchMovies] = useState([]);
   const [search, setSearch] = useState('');
-
-  useEffect(() => {
-    setLoad(true);
-  }, []);
 
   //BUTTON FUNCTIONS
   const handleChange = (e) => {
@@ -26,7 +22,7 @@ const App = () => {
     e.preventDefault();
     if (search !== '') {
       fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.state.search}
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API}&query=${search?.search}
         `,
       )
         .then((data) => data.json())
@@ -38,46 +34,41 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div
-        className="preloader"
-        style={load ? { opacity: 0 } : { opacity: 1 }}
-      ></div>
-      <div className="document" style={load ? { opacity: 1 } : { opacity: 0 }}>
-        <Switch>
-          <Route
-            path="/"
-            exact
-            render={(props) => (
-              <Fragment>
-                <Navigation
-                  handleSearch={handleSearch}
-                  handleChange={handleChange}
-                  search={search}
-                />
-                <HomePage />
-                <Footer />
-              </Fragment>
-            )}
-          />
-          <Route
-            path="/search/:searchtitle"
-            exact
-            render={(props) => (
-              <Fragment>
-                <SearchResult
-                  handleSearch={handleSearch}
-                  handleChange={handleChange}
-                  movies={searchMovies}
-                  search={search}
-                />
-              </Fragment>
-            )}
-          />
-          <Route path="/details/:movietitle/:movieid" component={MovieInfo} />
-          <Route path="/people/:peopleid" component={PersonInfo} />
-          <Route path="/newHome" component={HomePage} />
-        </Switch>
-      </div>
+      <LoadingSpinner />
+
+      <Switch>
+        <Route
+          path="/"
+          exact
+          render={() => (
+            <Fragment>
+              <Navigation
+                handleSearch={handleSearch}
+                handleChange={handleChange}
+                search={search}
+              />
+              <HomePage />
+              <Footer />
+            </Fragment>
+          )}
+        />
+        <Route
+          path="/search/:searchtitle"
+          exact
+          render={() => (
+            <Fragment>
+              <SearchResult
+                handleSearch={handleSearch}
+                handleChange={handleChange}
+                movies={searchMovies}
+                search={search}
+              />
+            </Fragment>
+          )}
+        />
+        <Route path="/details/:movietitle/:movieid" component={MovieInfo} />
+        <Route path="/people/:peopleid" component={PersonInfo} />
+      </Switch>
     </BrowserRouter>
   );
 };

@@ -9,22 +9,27 @@ export const fetchHomePageData = async () => {
     `3/movie/upcoming`,
   ];
   const railTitle = ['TOP RATED', 'POPULAR', 'UPCOMING'];
-  await Promise.all(
-    [...marqueeEndpoint, ...carouselUrlEndpoints].map((url) =>
-      sendApiRequest(url).then((response) => response),
-    ),
-  )
-    .then((data) => {
-      const marqueeData = data[0];
-      data.shift();
 
-      const newCarouselData = data.map((item, index) => {
-        return { ...item, title: railTitle[index] };
-      });
-      return { marquee: marqueeData, carouselData: newCarouselData };
-    })
-    .catch((error) => {
-      console.log(error);
-      return [];
+  try {
+    const data = await Promise.all(
+      [...marqueeEndpoint, ...carouselUrlEndpoints].map((url) =>
+        sendApiRequest(url).then((response) => response),
+      ),
+    );
+
+    if (!data) {
+      return {};
+    }
+
+    const marqueeData = data[0];
+    const carouselData = data.slice(1);
+
+    const newCarouselData = carouselData?.map((item, index) => {
+      return { ...item, title: railTitle[index] };
     });
+
+    return { marquee: marqueeData, carouselData: newCarouselData };
+  } catch (error) {
+    return [];
+  }
 };

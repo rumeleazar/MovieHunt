@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Footer from "../homepage/footer";
 import Navigation from "../NavBar/navbar";
+import { setLoadingIndicatorVisibility } from "../Loader/Loader";
 
 class PersonInfo extends Component {
   constructor(props) {
@@ -23,7 +24,6 @@ class PersonInfo extends Component {
       .then((data) => data.json())
       .then((data) => {
         this.setState({ person: data });
-        console.log(this.state.person);
         const gender = this.state.person.gender === 2 ? "Male" : "Female";
         this.setState({ gender: gender });
         if (this.state.person.birthday) {
@@ -42,11 +42,11 @@ class PersonInfo extends Component {
           return movies.popularity > 13;
         });
         this.setState({ popularMovies: x.splice(0, 6) });
-        console.log(this.state.popularMovies);
       });
 
     window.addEventListener("load", () => {
       this.setState({ load: true });
+      setLoadingIndicatorVisibility(false);
     });
   }
 
