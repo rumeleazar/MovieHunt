@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './index.css';
 import Navigation from './components/NavBar/navbar';
 import SearchResult from './components/searchpage/search';
@@ -36,11 +36,11 @@ const App = () => {
     <BrowserRouter>
       <LoadingSpinner />
 
-      <Switch>
+      <Routes>
         <Route
           path="/"
           exact
-          render={() => (
+          element={
             <Fragment>
               <Navigation
                 handleSearch={handleSearch}
@@ -50,25 +50,23 @@ const App = () => {
               <HomePage />
               <Footer />
             </Fragment>
-          )}
+          }
         />
         <Route
           path="/search/:searchtitle"
           exact
-          render={() => (
-            <Fragment>
-              <SearchResult
-                handleSearch={handleSearch}
-                handleChange={handleChange}
-                movies={searchMovies}
-                search={search}
-              />
-            </Fragment>
-          )}
+          element={
+            <SearchResult
+              handleSearch={handleSearch}
+              handleChange={handleChange}
+              movies={searchMovies}
+              search={search}
+            />
+          }
         />
-        <Route path="/details/:movietitle/:movieid" component={MovieInfo} />
-        <Route path="/people/:peopleid" component={PersonInfo} />
-      </Switch>
+        <Route path="/details/:movietitle/:movieid" element={<MovieInfo />} />
+        <Route path="/people/:peopleid" element={<PersonInfo />} />
+      </Routes>
     </BrowserRouter>
   );
 };

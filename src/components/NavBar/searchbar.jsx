@@ -1,18 +1,19 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 import searchicon from "../../assets/images/searchicon.png";
+import { useNavigate } from "react-router-dom";
 
 function SearchBar(props) {
+  const navigate = useNavigate()
 
   function ButtonRedirect() {
 
     if (props.search.search !== "") {
 
       setTimeout(function () {
-        props.history.push(`/search/${props.search.search}`);  
+        navigate(`/search/${props.search.search}`);  
       }, 100);
     } else {
-      props.history.replace(window.location.pathname);
+      navigate(window.location.pathname);
     }
   }
 
@@ -33,4 +34,4 @@ function SearchBar(props) {
   );
 }
 
-export default withRouter(SearchBar);
+export default SearchBar;

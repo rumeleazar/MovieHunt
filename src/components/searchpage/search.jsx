@@ -1,5 +1,5 @@
 import React, {useState,useCallback} from "react";
-import { withRouter } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Footer from "../homepage/footer";
 import Navigation from "../NavBar/navbar";
 import ReactImageFallback from "react-image-fallback";
@@ -16,6 +16,8 @@ const SearchResults = ({
 
   const [searchResults, setSearchResults] = useState(search);
   const [moviesResults, setMoviesResults] = useState(movies);
+
+  const navigate = useNavigate();
 
    const handleSearch = useCallback((e) => {
     e.preventDefault();
@@ -57,7 +59,7 @@ const SearchResults = ({
             <a
               href={`/details/${movie.title}/${movie.id}`}
               onClick={() => {
-                props.history.push(
+                navigate(
                   `/details/${movie.title}/${movie.id}`
                 );
               }}
@@ -80,4 +82,4 @@ const SearchResults = ({
 
 }
 
-export default withRouter(SearchResults);
+export default SearchResults;

@@ -34,8 +34,6 @@ const HomePage = () => {
             }
            
             {carouselData?.map((data, index) => {
-           
-            
                 return (
                     <div className ='carouselContainer' key={`${data?.title}`}>
                         <h1 className = 'homeText'>{data?.title}</h1>

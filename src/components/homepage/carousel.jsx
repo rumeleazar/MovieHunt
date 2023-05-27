@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
 import ReactImageFallback from "react-image-fallback";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -102,4 +101,4 @@ class Carousel extends Component {
   }
 }
 
-export default withRouter(Carousel);
+export default Carousel;
