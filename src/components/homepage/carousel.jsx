@@ -1,72 +1,88 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import ReactImageFallback from "react-image-fallback";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from "react-router-dom";
+import { clsx } from 'clsx';
 import noimage from "../../assets/images/noimage.png";
+import"./Carousel.css";
 
-class Carousel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      transformValue: 0,
-      rightValue: 0,
-      load: false,
-    };
-  }
 
-  componentWillMount() {
-    this.setState({ load: true });
-  }
+const NavigationArrow = ({className, onClick, customClassName, arrowClassName}) => {
+    return (<div className={clsx(!customClassName ? className :customClassName )} onClick={onClick} ><div className={arrowClassName}/></div>);
+}
 
-  render() {
-    const settings = {
-      infinite: false,
-      speed: 500,
-      slidesToShow: 5,
-      slidesToScroll: 1,
-      draggable: false,
-      responsive: [
-        {
-          breakpoint: 1260,
-          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            infinite: false,
-            dots: false,
-          },
-        },
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            infinite: false,
-            dots: false,
-          },
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
-            initialSlide: 2,
-          },
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          },
-        },
-      ],
-    };
-    return (
+const settings = {
+  nextArrow: <NavigationArrow customClassName = "rightNavArrow" arrowClassName = "rightArrow" />,
+  prevArrow: <NavigationArrow customClassName = "leftNavArrow" arrowClassName = "leftArrow"/>,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 7,
+  lazyLoad: true,
+  slidesToScroll: 1,
+  centerMode: true,
+  draggable: false,
+  responsive: [
+    {
+      breakpoint: 1290,
+      settings: {
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        centerMode: true,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        centerMode: true,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        centerMode: true,
+        infinite: true,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        centerMode: true,
+      },
+    },
+  ],
+};
+
+
+
+const Carousel = (props) => {
+  const navigate = useNavigate();
+  const [load, setLoad] = useState(false);
+
+  useEffect(() => {
+    setLoad(true);
+  },[])
+
+
+  return (
+    <div className = "carouselContainer">
       <div
         className="carousel"
         style={
-          this.state.load
+          load
             ? {
                 opacity: 1,
               }
@@ -74,13 +90,13 @@ class Carousel extends Component {
         }
       >
         <Slider {...settings}>
-          {this.props.movies.map((movie, index) => (
+          {props.movies.map((movie, index) => (
             <div className="cardContainer" key={index}>
               <a
                 href={`/details/${movie.title}/${movie.id}`}
                 style={{ cursor: "pointer" }}
                 onClick={() => {
-                  this.props.history.push(
+                  navigate(
                     `/details/${movie.title}/${movie.id}`
                   );
                 }}
@@ -91,14 +107,15 @@ class Carousel extends Component {
                   alt="cool image should be here"
                 />
 
-                <p>{movie.title}</p>
+                <div className = 'carouselTitle'>{movie.title}</div>
               </a>
             </div>
           ))}
         </Slider>
       </div>
-    );
-  }
-}
+    </div>
+  );
+ }
+
 
 export default Carousel;

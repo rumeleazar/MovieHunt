@@ -3,9 +3,8 @@ import Carousel from '../components/HomePage/Carousel';
 import HeroCarousel from '../components/HomePage/Hero';
 import { fetchHomePageData } from '../Services/Api/HomePageApi';
 import { setLoadingIndicatorVisibility } from '../components/Loader/Loader';
-
+import './HomePage.css';
 const HomePage = () => {
-
     const [carouselData, setCarouselData] = useState([]);
     const [marqueeData, setMarqueeData] = useState([]);
     
@@ -35,8 +34,8 @@ const HomePage = () => {
            
             {carouselData?.map((data, index) => {
                 return (
-                    <div className ='carouselContainer' key={`${data?.title}`}>
-                        <h1 className = 'homeText'>{data?.title}</h1>
+                    <div key={`${data?.title}`}>
+                        <div className = 'homeTitle'>{data?.title}</div>
                             <Carousel
                                 movies={data?.results}
                                 key={`${data?.title}`}

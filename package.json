@@ -6,11 +6,12 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "clsx": "^1.2.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-image-fallback": "^8.0.0",
     "react-router-dom": "^6.0.0-alpha.2",
-    "react-scripts": "3.4.0",
+    "react-scripts": "^5.0.1",
     "react-slick": "^0.25.2",
     "slick-carousel": "^1.8.1"
   },
@@ -18,9 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint",
-    "lint:fix": "npm run lint -- --fix"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,13 +35,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "eslint": "^6.6.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }

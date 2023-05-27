@@ -8,7 +8,7 @@ export const fetchHomePageData = async () => {
     `3/movie/popular`,
     `3/movie/upcoming`,
   ];
-  const railTitle = ['TOP RATED', 'POPULAR', 'UPCOMING'];
+  const railTitle = ['Top Rated', 'Popular', 'Upcoming'];
 
   try {
     const data = await Promise.all(

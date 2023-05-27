@@ -185,53 +185,7 @@ a {
   font-size: 17px;
 }
 
-/* CAROUSEL SECTION */
 
-.carousel {
-  width: 80%;
-  margin: 0 auto;
-  opacity: 0;
-  transition: 1s;
-}
-
-.cardContainer {
-  width: auto;
-  text-align: center;
-  height: 290px;
-}
-
-.cardContainer p {
-  font-size: 15px;
-  line-height: 15px;
-  margin: 0;
-  margin-top: 10px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-}
-
-.cardContainer img {
-  height: 84%;
-  width: 80%;
-  border-radius: 10px;
-  filter: brightness(85%);
-  margin: auto;
-  transition: 0.4s;
-}
-
-.cardContainer img:hover {
-  filter: brightness(120%);
-}
-
-.homeText {
-  text-align: justify;
-  margin: 35px auto;
-  width: 75%;
-  padding: 20px 0;
-  border-bottom: 1px solid black;
-}
-
-.pop {
-  border-bottom: 1px solid black;
-}
 
 /* SEARCH PAGE SECTION */
 
@@ -561,13 +515,7 @@ a {
     font-size: 16px;
     top: 66%;
   }
-
-  /* CAROUSEL SECTION */
-
-  .homeText {
-    font-size: 29px;
-  }
-
+  
   /* MOVIE INFO SECTION */
 
   .posterHeaderInfo {
