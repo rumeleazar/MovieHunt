@@ -18,6 +18,7 @@ const App = () => {
     setSearch({ search: e.target.value });
   };
 
+  //Search functions
   const handleSearch = (e) => {
     e.preventDefault();
     if (search !== '') {
