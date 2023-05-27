@@ -1,6 +1,6 @@
 import React, {useState,useCallback} from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "../homepage/footer";
+import Footer from "../HomePage/Footer";
 import Navigation from "../NavBar/navbar";
 import ReactImageFallback from "react-image-fallback";
 import noimage from "../../assets/images/noimage.png";

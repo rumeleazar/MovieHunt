@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Carousel from '../components/homepage/carousel';
-import HeroCarousel from '../components/homepage/hero';
+import Carousel from '../components/HomePage/Carousel';
+import HeroCarousel from '../components/HomePage/Hero';
 import { fetchHomePageData } from '../Services/Api/HomePageApi';
 import { setLoadingIndicatorVisibility } from '../components/Loader/Loader';
 

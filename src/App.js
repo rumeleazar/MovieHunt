@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './index.css';
 import Navigation from './components/NavBar/navbar';
 import SearchResult from './components/searchpage/search';
-import MovieInfo from './components/Informations/movieinfo';
-import Footer from './components/homepage/footer';
-import PersonInfo from './components/Informations/personInfo';
+import MovieInfo from './components/Informations/MovieInfo';
+import Footer from './components/HomePage/Footer';
+import PersonInfo from './components/Informations/PersonInfo';
 import HomePage from './Pages/HomePage';
 import LoadingSpinner from './components/Loader/Loader';
 

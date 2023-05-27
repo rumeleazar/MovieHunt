@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import CastCarousel from "./castcarousel";
-import Footer from "../homepage/footer";
+import CastCarousel from "./CastCarousel";
+import Footer from "../HomePage/Footer";
 import Navigation from "../NavBar/navbar";
 import ReactImageFallback from "react-image-fallback";
 import noimage from "../../assets/images/noimage.png";
