@@ -48,8 +48,8 @@ const HeroCarousel = (props) => {
         <Slider {...settings}>
           {props.marqueeData?.map(
             (movie, index) => (
-              <div>
-              <div className={styles.heroContainer} key={index}>
+              <div key ={index}>
+              <div className={styles.heroContainer}>
                 <div className={styles.heroImage}>
                   <img
                     src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}

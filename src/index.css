@@ -6,7 +6,7 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   position: absolute;
-  background-color: #101013;
+  background-color: #0d0d0e;
   color: white;
   font-family: lato;
 }
@@ -94,7 +94,6 @@ a {
   padding-left: 20px;
   font-size: 18px;
   background-color: black;
-  color: white;
   border: 1px solid white;
 }
 

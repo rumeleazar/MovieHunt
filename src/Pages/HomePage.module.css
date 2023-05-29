@@ -3,3 +3,30 @@
     margin-top: 1%;
     margin-left: 2.8%;
 }
+
+
+.listingsButtonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    border-bottom: 2px solid gray;
+    height: 10vh;
+    width: 88vw;  
+    transition-delay: 2s;
+}
+
+.listingsButton {
+    display: flex;
+    height: 30px;
+    width: fit-content;
+    font-size: 22px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.listingsButton:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}

@@ -7,6 +7,7 @@ import MovieInfo from './components/Informations/MovieInfo';
 import Footer from './components/HomePage/Footer';
 import PersonInfo from './components/Informations/PersonInfo';
 import HomePage from './Pages/HomePage';
+import { StoreProvider } from './Services/Store/store';
 import LoadingSpinner from './components/Loader/Loader';
 
 const App = () => {
@@ -35,39 +36,40 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <LoadingSpinner />
-
-      <Routes>
-        <Route
-          path="/"
-          exact
-          element={
-            <Fragment>
-              <Navigation
+      <StoreProvider>
+        <LoadingSpinner />
+        <Routes>
+          <Route
+            path="/"
+            exact
+            element={
+              <Fragment>
+                <Navigation
+                  handleSearch={handleSearch}
+                  handleChange={handleChange}
+                  search={search}
+                />
+                <HomePage />
+                <Footer />
+              </Fragment>
+            }
+          />
+          <Route
+            path="/search/:searchtitle"
+            exact
+            element={
+              <SearchResult
                 handleSearch={handleSearch}
                 handleChange={handleChange}
+                movies={searchMovies}
                 search={search}
               />
-              <HomePage />
-              <Footer />
-            </Fragment>
-          }
-        />
-        <Route
-          path="/search/:searchtitle"
-          exact
-          element={
-            <SearchResult
-              handleSearch={handleSearch}
-              handleChange={handleChange}
-              movies={searchMovies}
-              search={search}
-            />
-          }
-        />
-        <Route path="/details/:movietitle/:movieid" element={<MovieInfo />} />
-        <Route path="/people/:peopleid" element={<PersonInfo />} />
-      </Routes>
+            }
+          />
+          <Route path="/details/:movietitle/:movieid" element={<MovieInfo />} />
+          <Route path="/people/:peopleid" element={<PersonInfo />} />
+        </Routes>
+      </StoreProvider>
     </BrowserRouter>
   );
 };
