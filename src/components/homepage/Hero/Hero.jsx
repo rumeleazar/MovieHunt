@@ -45,28 +45,28 @@ const HeroCarousel = (props) => {
           : { opacity: 0 }
       }
     > 
- 
-      <Slider {...settings}>
-        {props.marqueeData?.map(
-          (movie, index) => (
-            <div className={styles.heroContainer} key={index}>
-              <div className={styles.heroOverlay}/>
-              <div className={styles.someImage}>
-                <img
-                  src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-                  alt="this is the card pic"
-                ></img>
+        <Slider {...settings}>
+          {props.marqueeData?.map(
+            (movie, index) => (
+              <div>
+              <div className={styles.heroContainer} key={index}>
+                <div className={styles.heroImage}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+                    alt="this is the card pic"
+                  />
+                </div>
+                <div className = {styles.metadataContainer}>
+                  <div className = {styles.heroHeader}>{movie.title} ({` ${movie.release_date.slice(0, 4)} `})</div>
+                  <div className = {styles.subHeader}>Now playing</div>
+                  <div className ={styles.overView}>{movie.overview}</div>
+                </div>
               </div>
-              <h3>Now Playing</h3>
-              <h1>
-                {movie.title} ({` ${movie.release_date.slice(0, 4)} `})
-              </h1>
-              <p>{movie.overview}</p>
+              <div className={styles.heroOverlay}/>
             </div>
-          ),
-          this
-        )}
-      </Slider>
+            )
+          )}
+        </Slider>
     </div>
 
   );
