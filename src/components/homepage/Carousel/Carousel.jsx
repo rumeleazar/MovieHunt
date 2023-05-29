@@ -5,8 +5,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from "react-router-dom";
 import { clsx } from 'clsx';
-import noimage from "../../assets/images/noimage.png";
-import"./Carousel.css";
+import noimage from "../../../assets/images/noimage.png";
+import styles from "./Carousel.module.css";
 
 
 const NavigationArrow = ({className, onClick, customClassName, arrowClassName}) => {
@@ -14,8 +14,8 @@ const NavigationArrow = ({className, onClick, customClassName, arrowClassName}) 
 }
 
 const settings = {
-  nextArrow: <NavigationArrow customClassName = "rightNavArrow" arrowClassName = "rightArrow" />,
-  prevArrow: <NavigationArrow customClassName = "leftNavArrow" arrowClassName = "leftArrow"/>,
+  nextArrow: <NavigationArrow customClassName = {styles.rightNavArrow} arrowClassName = {styles.rightArrow} />,
+  prevArrow: <NavigationArrow customClassName = {styles.leftNavArrow} arrowClassName = {styles.leftArrow} />,
   infinite: true,
   speed: 500,
   slidesToShow: 7,
@@ -78,9 +78,9 @@ const Carousel = (props) => {
 
 
   return (
-    <div className = "carouselContainer">
+    <div className = {styles.carouselContainer}>
       <div
-        className="carousel"
+        className= {styles.carousel}
         style={
           load
             ? {
@@ -91,7 +91,7 @@ const Carousel = (props) => {
       >
         <Slider {...settings}>
           {props.movies.map((movie, index) => (
-            <div className="cardContainer" key={index}>
+            <div className= {styles.cardContainer} key={index}>
               <a
                 href={`/details/${movie.title}/${movie.id}`}
                 style={{ cursor: "pointer" }}
@@ -107,7 +107,7 @@ const Carousel = (props) => {
                   alt="cool image should be here"
                 />
 
-                <div className = 'carouselTitle'>{movie.title}</div>
+                <div className = {styles.carouselTitle}>{movie.title}</div>
               </a>
             </div>
           ))}

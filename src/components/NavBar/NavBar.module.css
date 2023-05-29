@@ -1,0 +1,23 @@
+.navbar {
+    width: 100vw;
+    height: 9vh;
+    background: rgba(0, 0 ,0 ,0.5);
+    position: absolute;
+    z-index: 10;
+}
+  
+.logo {
+    width: 150px;
+    text-align: center;
+    height: 5vh;
+    position: relative;
+    float: left;
+    transform: translateY(-22%);
+    margin-left: 40px;
+}
+  
+.logo h1 {
+    color: #b80000;
+    font-family: Abril;
+    font-size: 28px;
+}

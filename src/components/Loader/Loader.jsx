@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from "react";
-import './Loader.css';
+import styles from './Loader.module.css';
 
 
 export let setLoadingIndicatorVisibility;
@@ -16,8 +16,8 @@ const LoadingSpinner = (showOnMount = true) => {
     }, [])
 
   return showLoader ?  (
-    <div className="preloader-container"> 
-        <div className="preloader"/>
+    <div className={styles.preloaderContainer}> 
+        <div className={styles.preloader}/>
     </div>
    
   ) : null;

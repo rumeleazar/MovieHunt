@@ -1,14 +1,15 @@
 import React from "react";
 import SearchBar from "./searchbar";
 import { Link } from "react-router-dom";
+import styles from './NavBar.module.css';
 
 
 
 const Navigation = ({handleChange, handleSearch, search}) => {
   return (
-    <div className="navbar">
+    <div className={styles.navbar}>
       <nav>
-        <div className="logo">
+        <div className={styles.logo}>
           <Link to="/">
             <h1>MVHunt</h1>
           </Link>
