@@ -1,5 +1,5 @@
 import React from "react";
-import SearchBar from "./searchbar";
+import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 import styles from './NavBar.module.css';
 

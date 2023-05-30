@@ -20,6 +20,7 @@ const settings = {
   speed: 500,
   slidesToShow: 6,
   lazyLoad: true,
+  centerPadding: "85px",
   slidesToScroll: 1,
   centerMode: true,
   draggable: false,
@@ -27,8 +28,9 @@ const settings = {
     {
       breakpoint: 1290,
       settings: {
-        slidesToShow: 5,
+        slidesToShow: 6,
         slidesToScroll: 1,
+        centerPadding: "85px",
         centerMode: true,
         infinite: true,
         dots: false,
@@ -39,6 +41,7 @@ const settings = {
       settings: {
         slidesToShow: 3,
         slidesToScroll: 1,
+        centerPadding: "85px",
         centerMode: true,
         infinite: true,
         dots: false,
@@ -91,7 +94,7 @@ const Carousel = (props) => {
       >
         <Slider {...settings}>
           {props.movies.map((movie, index) => (
-            <div className= {styles.cardContainer} key={index}>
+            <div className= {styles.cardContainer} key={index} style={{ width: 253 }}>
               <a
                 href={`/details/${movie.title}/${movie.id}`}
                 style={{ cursor: "pointer" }}

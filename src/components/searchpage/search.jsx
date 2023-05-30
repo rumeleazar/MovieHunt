@@ -1,11 +1,12 @@
 import React, {useState,useCallback} from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../HomePage/Footer";
-import Navigation from "../NavBar/navbar";
+import Navigation from "../NavBar/NavBar";
 import ReactImageFallback from "react-image-fallback";
 import noimage from "../../assets/images/noimage.png";
 import { fetchMovieSearchData } from "../../Services/Api/SearchApi";
 import { setLoadingIndicatorVisibility } from "../Loader/Loader";
+import styles from './Search.module.css'
 
 const SearchResults = ({
   movies,
@@ -41,21 +42,21 @@ const SearchResults = ({
         search={search}
       />
       <div
-        className="searchDescription"
+        className={styles.searchDescription}
  
       >
         <h1>SEARCH RESULTS FOR {searchResults?.search}</h1>
       </div>
       <div
-        className="searchDivider"
+        className={styles.searchDivider}
       ></div>
       <div
-        className="searchContainer"
+        className={styles.searchContainer}
       >
         {moviesResults?.searchedMovies?.map((movie, index) => {
    
           return(
-          <div className="searchCardContainer" key={index}>
+          <div className={styles.searchCardContainer} key={index}>
             <a
               href={`/details/${movie.title}/${movie.id}`}
               onClick={() => {

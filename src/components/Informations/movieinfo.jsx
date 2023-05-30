@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CastCarousel from "./CastCarousel";
 import Footer from "../HomePage/Footer";
-import Navigation from "../NavBar/navbar";
+import Navigation from "../NavBar/NavBar";
 import ReactImageFallback from "react-image-fallback";
 import noimage from "../../assets/images/noimage.png";
 import { useParams } from "react-router-dom";

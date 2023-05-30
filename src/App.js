@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './index.css';
-import Navigation from './components/NavBar/navbar';
-import SearchResult from './components/searchpage/search';
+import Navigation from './components/NavBar/NavBar';
+import SearchResult from './components/SearchPage/Search';
 import MovieInfo from './components/Informations/MovieInfo';
 import Footer from './components/HomePage/Footer';
 import PersonInfo from './components/Informations/PersonInfo';

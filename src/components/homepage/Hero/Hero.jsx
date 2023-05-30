@@ -19,6 +19,7 @@ const settings = {
   nextArrow: <Arrow />,
   prevArrow: <Arrow />,
   lazyLoad: 'anticipated',
+
 };
 
 

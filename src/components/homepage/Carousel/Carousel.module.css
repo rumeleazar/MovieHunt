@@ -1,7 +1,6 @@
   .carouselContainer {
     width: 100%;
     overflow: hidden;
-  
   }
 
   .carousel {
@@ -21,7 +20,6 @@
     margin: 0;
     overflow: auto;
     padding-top: 4%;
- 
   }
   
   .cardContainer p {
@@ -34,7 +32,7 @@
   
   .cardContainer img {
     height: 85%;
-    width: 80%;
+    width: 12.5vw;
     border-radius: 10px;
     filter: brightness(85%);
     margin: auto;
@@ -48,16 +46,17 @@
   
 
   .rightNavArrow {
-    height: 82%;
+    height: 84%;
     width: 3%;
     position: absolute;
     right: 0;
     top: 1.9%;
     z-index: 10;
+    border-radius: 10px 0 0 10px;
   }
 
   .rightNavArrow:hover {
-    background: rgba(0, 0, 0, 0.7);
+    cursor: pointer
   }
 
   .rightArrow {
@@ -78,16 +77,17 @@
   }
 
   .leftNavArrow {
-    height: 82%;
+    height: 84%;
     width: 3%;
     position: absolute;
     left: 0;
     top: 1.9%;
     z-index: 10;
+    border-radius: 0 10px 10px 0;
   }
 
   .leftNavArrow:hover {
-    background: rgba(0, 0, 0, 0.7);
+    cursor: pointer
   }
 
   .leftArrow {
