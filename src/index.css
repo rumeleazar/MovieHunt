@@ -424,24 +424,6 @@ a {
     transform: translateX(-110%) translateY(21%);
   }
 
-  /* HERO CAROUSEL SECTION */
-
-  .heroContainer h1 {
-    font-size: 29px;
-    width: 100%;
-    top: 58%;
-  }
-
-  .heroContainer h3 {
-    font-size: 25px;
-  }
-
-  .heroContainer p {
-    width: 65%;
-    font-size: 16px;
-    top: 66%;
-  }
-  
   /* MOVIE INFO SECTION */
 
   .posterHeaderInfo {
@@ -575,36 +557,7 @@ a {
     transform: translateX(-320%) translateY(26%);
   }
 
-  /* HERO CAROUSEL SECTION */
 
-  .heroCarousel {
-    height: 40vh;
-    transition: 1s;
-  }
-
-  .heroContainer {
-    text-align: center;
-    height: 40vh;
-  }
-  .heroContainer h1 {
-    font-size: 23px;
-    width: 100%;
-    top: 73%;
-    left: 0;
-    text-align: center;
-  }
-
-  .heroContainer h3 {
-    width: 100%;
-    font-size: 20px;
-    top: 63%;
-    left: 0;
-    text-align: center;
-  }
-
-  .heroContainer p {
-    display: none;
-  }
 
   /* MOVIE INFO SECTION */
 

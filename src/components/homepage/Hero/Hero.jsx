@@ -12,13 +12,13 @@ const  Arrow = (props) => {
 const settings = {
   infinite: true,
   fade: true,
-  lazyLoad: true,
   slidesToShow: 1,
   autoplay: true,
-  speed: 2000,
-  autoplaySpeed: 3000,
+  speed: 1000,
+  autoplaySpeed: 6000,
   nextArrow: <Arrow />,
   prevArrow: <Arrow />,
+  lazyLoad: 'anticipated',
 };
 
 
@@ -45,12 +45,14 @@ const HeroCarousel = (props) => {
           : { opacity: 0 }
       }
     > 
- 
+     <div className={styles.heroBottomOverlay}/>
+     <div className ={styles.heroCarouselContainer}>
         <Slider {...settings}>
           {props.marqueeData?.map(
             (movie, index) => (
               <div key ={index}>
               <div className={styles.heroContainer}>
+                <div className={styles.heroOverlay}/>
                 <div className={styles.heroImage}>
                   <img
                     src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
@@ -68,7 +70,7 @@ const HeroCarousel = (props) => {
             )
           )}
         </Slider>
-      <div className={styles.heroOverlay}/>
+      </div>
     </div>
 
   );
