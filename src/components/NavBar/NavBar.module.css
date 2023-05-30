@@ -1,10 +1,11 @@
 .navbar {
     width: 100vw;
-    height: 9vh;
-    background: rgba(0, 0 ,0 ,0.5);
+    height: 7vh;
+    background: rgba(0, 0 ,0 ,0.1);
     position: absolute;
     top: 0;
     z-index: 10;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.5)
 }
   
 .logo {
@@ -13,12 +14,12 @@
     height: 5vh;
     position: relative;
     float: left;
-    transform: translateY(-22%);
+    transform: translateY(-15%);
     margin-left: 40px;
 }
   
 .logo h1 {
-    color: #b80000;
+    color: #000081;
     font-family: Abril;
     font-size: 28px;
 }

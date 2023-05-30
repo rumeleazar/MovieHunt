@@ -7,7 +7,7 @@
     width: 100%;
     margin: 0;
     opacity: 0;
-    transition: 1s;
+    transition: 2s;
     overflow: auto;
   }
   
@@ -32,8 +32,9 @@
   }
   
   .cardContainer img {
-    height: 84%;
-    width: 95%;
+    height: 85%;
+    width: 83%;
+    border-radius: 10px;
     filter: brightness(85%);
     margin: auto;
     transition: 0.4s;

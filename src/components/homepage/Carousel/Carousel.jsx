@@ -18,7 +18,7 @@ const settings = {
   prevArrow: <NavigationArrow customClassName = {styles.leftNavArrow} arrowClassName = {styles.leftArrow} />,
   infinite: true,
   speed: 500,
-  slidesToShow: 7,
+  slidesToShow: 6,
   lazyLoad: true,
   slidesToScroll: 1,
   centerMode: true,

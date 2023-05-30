@@ -45,6 +45,7 @@ const HeroCarousel = (props) => {
           : { opacity: 0 }
       }
     > 
+ 
         <Slider {...settings}>
           {props.marqueeData?.map(
             (movie, index) => (
@@ -62,11 +63,12 @@ const HeroCarousel = (props) => {
                   <div className ={styles.overView}>{movie.overview}</div>
                 </div>
               </div>
-              <div className={styles.heroOverlay}/>
+            
             </div>
             )
           )}
         </Slider>
+      <div className={styles.heroOverlay}/>
     </div>
 
   );

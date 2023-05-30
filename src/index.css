@@ -6,7 +6,7 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   position: absolute;
-  background-color: #0d0d0e;
+  background-color: rgba(12, 12, 14, 1);
   color: white;
   font-family: lato;
 }
@@ -81,16 +81,17 @@ a {
 .searchbar {
   margin: auto;
   text-align: center;
-  height: 40px;
-  width: 50%;
-  transform: translateY(25%);
+  height: 10%;
+  width: 20%;
+  transform: translate(195%, 25%);
+
 }
 
 .searchbar input {
-  height: 38px;
-  width: 80%;
+  height: 4vh;
+  width: 15vw;
   border-radius: 20px;
-  color: black;
+  color: white;
   padding-left: 20px;
   font-size: 18px;
   background-color: black;

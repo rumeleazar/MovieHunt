@@ -11,7 +11,7 @@ const Navigation = ({handleChange, handleSearch, search}) => {
       <nav>
         <div className={styles.logo}>
           <Link to="/">
-            <h1>MVHunt</h1>
+            <h1>FLIX</h1>
           </Link>
         </div>
         <div>

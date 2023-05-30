@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { StoreContext } from '../Services/Store/store';
 import Carousel from '../components/HomePage/Carousel/Carousel';
 import HeroCarousel from '../components/HomePage/Hero/Hero';
+import clsx from 'clsx';
 import { fetchHomePageData } from '../Services/Api/HomePageApi';
 import { setLoadingIndicatorVisibility } from '../components/Loader/Loader';
 import styles from './HomePage.module.css';
@@ -13,6 +14,7 @@ const HomePage = () => {
     const [carouselData, setCarouselData] = useState([]);
     const [marqueeData, setMarqueeData] = useState([]);
     const [individualCarousel, setIndividualCarousel] = useState([]);
+    const [activeListing, setActiveListing] = useState(0)
 
     const {storeData, setStoreData} = useContext(StoreContext)
     
@@ -37,9 +39,10 @@ const HomePage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    const onListingButtonClick = (listingName) => {
+    const onListingButtonClick = (listingName, index) => {
         const listingParam = listingName.toLowerCase().replaceAll(' ', '_');
         setIndividualCarousel(storeData[listingParam])
+        setActiveListing(index)
     }
 
     if(!marqueeData) {
@@ -54,9 +57,12 @@ const HomePage = () => {
             />
             }
             <div className={styles.listingsButtonContainer}>
-                {listings.map((data) => {
+                {listings.map((data, index) => {
                     return(
-                        <div className={styles.listingsButton} onClick={()=> onListingButtonClick(data)} key={data}>
+                        <div className={clsx(styles.listingsButton,
+                         {[styles.listingsButtonActive]: activeListing === index})} 
+                         onClick={()=> onListingButtonClick(data, index)} key={data}
+                         >
                             <div>{data}</div>
                         </div>
 
@@ -65,7 +71,7 @@ const HomePage = () => {
 
             </div>
 
-            {individualCarousel?.results?.length ? <Carousel movies ={individualCarousel?.results}/> : null}
+            {individualCarousel?.results?.length ? <Carousel movies ={individualCarousel?.results} key={individualCarousel?.title}/> : null}
            
             {carouselData?.map((data, index) => {
                 return (
