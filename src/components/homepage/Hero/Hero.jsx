@@ -61,8 +61,8 @@ const HeroCarousel = (props) => {
                   />
                 </div>
                 <div className = {styles.metadataContainer}>
+                <div className = {styles.subHeader}>Now playing</div>
                   <div className = {styles.heroHeader}>{movie.title} ({` ${movie.release_date.slice(0, 4)} `})</div>
-                  <div className = {styles.subHeader}>Now playing</div>
                   <div className ={styles.overView}>{movie.overview}</div>
                 </div>
               </div>

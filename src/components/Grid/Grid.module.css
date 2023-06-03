@@ -16,7 +16,7 @@
     width: 12.5vw;
     text-align: center;
     height: 42vh;
-    margin: auto 17px;
+    margin: auto 25px;
     transition: 0.4s;
   }
 
@@ -29,7 +29,6 @@
     height: 77%;
     width: 100%;
     border-radius: 10px;
-    filter: brightness(70%);
     transition: 0.4s;
   }
 

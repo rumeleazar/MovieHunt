@@ -3,10 +3,9 @@ import { StoreContext } from '../Services/Store/store';
 import Carousel from '../components/HomePage/Carousel/Carousel';
 import HeroCarousel from '../components/HomePage/Hero/Hero';
 import Grid from '../components/Grid/Grid';
-import clsx from 'clsx';
+import ListingNavigation from '../components/HomePage/ListingNavigation/ListingNavigation.';
 import { fetchHomePageData, fetchIndividualCarousel, fetchDiscoverCarousel } from '../Services/Api/HomePageApi';
-import { setLoadingIndicatorVisibility } from '../components/Loader/Loader';
-import styles from './HomePage.module.css';
+import  { setLoadingIndicatorVisibility } from '../components/Loader/Loader';
 
 
 const listings = ['Popular', 'Now Playing', 'Top Rated', 'Upcoming'];
@@ -52,7 +51,6 @@ const HomePage = () => {
 
     const onListingButtonClick = async (listingName, index) => {
         const listingParam = listingName.toLowerCase().replaceAll(' ', '_');
-        
         if(!storeData.homePage[listingParam]) {
             const newData = await fetchIndividualCarousel(listingParam);
             setStoreData({homePage: {
@@ -67,9 +65,7 @@ const HomePage = () => {
     }
 
     const onDiscoverListingButtonClick = async (listingName, index) => {
-      
         const listingParam = listingName.toLowerCase().replaceAll(' ', '_');
-
         if(!storeData.homePage[listingParam]) {
             const newData = await fetchDiscoverCarousel(listingMapper[listingParam]);
             setStoreData({homePage: {
@@ -90,44 +86,40 @@ const HomePage = () => {
     }
     
     return (
-        <div>
+        <>
             {marqueeData  &&
              <HeroCarousel
                 marqueeData = {marqueeData?.results}
             />
             }
-            <div className={styles.listingsButtonContainer}>
-                {listings.map((data, index) => {
-                    return(
-                        <div className={clsx(styles.listingsButton,
-                         {[styles.listingsButtonActive]: activeListing === index})} 
-                         onClick={()=> onListingButtonClick(data, index)} key={data}
-                         >
-                            <div>{data}</div>
-                        </div>
-
-                    );
-                })}
-
-            </div>
-            {individualCarousel?.results?.length ? <Carousel movies ={individualCarousel?.results}  key={individualCarousel?.title}/> : null}
-            <div className={styles.listingsButtonContainer}>
-                {discoverListings.map((data, index) => {
-                    return(
-                        <div className={clsx(styles.listingsButton,
-                         {[styles.listingsButtonActive]: discoverListing === index})} 
-                         onClick={()=> onDiscoverListingButtonClick(data, index)} key={data}
-                         >
-                            <div>{data}</div>
-                        </div>
-
-                    );
-                })}
-
-            </div>
-            {discoverData?.results?.length ? <Grid gridData={discoverData?.results.slice(0, 18)} keyName={discoverData?.title} key={discoverData?.title}/> : null}
-        
-        </div>
+            <ListingNavigation 
+                listings={listings} 
+                onClick={onListingButtonClick} 
+                activeListing={activeListing}
+            />
+            {individualCarousel?.results?.length ?
+                <Carousel
+                    movies ={individualCarousel?.results}
+                    key={individualCarousel?.title}
+                />
+                : null
+            }
+            <br/>
+            <br/>
+            <br/>
+            <ListingNavigation 
+                listings={discoverListings} 
+                onClick={onDiscoverListingButtonClick} 
+                activeListing={discoverListing}
+            />
+            {discoverData?.results?.length ?
+                <Grid 
+                    gridData={discoverData?.results.slice(0, 18)} 
+                    keyName={discoverData?.title} key={discoverData?.title}
+                /> 
+                : null
+            }
+        </>
     )
 }
 

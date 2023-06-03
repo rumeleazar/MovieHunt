@@ -33,7 +33,6 @@
     height: 85%;
     width: 12.5vw;
     border-radius: 10px;
-    filter: brightness(85%);
     margin: auto;
     transition: 0.4s;
   }

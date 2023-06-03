@@ -30,7 +30,6 @@ const Grid = ({gridData, className, keyName}) => {
                         fallbackImage={noimage}
                         alt="cool image should be here"
                     />
-                    <h1>{data.title || data.name}</h1>
                     </a>
                 </div>
               )

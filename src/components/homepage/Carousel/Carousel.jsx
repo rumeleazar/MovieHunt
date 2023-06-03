@@ -109,8 +109,6 @@ const Carousel = (props) => {
                   fallbackImage={noimage}
                   alt="cool image should be here"
                 />
-
-                <div className = {styles.carouselTitle}>{movie.title}</div>
               </a>
             </div>
           ))}

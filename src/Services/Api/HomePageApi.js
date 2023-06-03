@@ -38,4 +38,8 @@ export const fetchIndividualCarousel = async (listingParam) => {
 export const fetchDiscoverCarousel = async (listingParam) => {
   return await sendApiRequest(`3/trending/${listingParam}/day`)
 }
+
+export const fetchGenres = async (contentType) => {
+  return await sendApiRequest(`3/genre/${contentType}}/list`)
+}
  
