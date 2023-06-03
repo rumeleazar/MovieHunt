@@ -8,8 +8,9 @@ export const fetchHomePageData = async () => {
     `3/movie/popular`,
     `3/movie/upcoming`,
     `3/movie/now_playing`,
-    `3/discover/movie`,
-    `3/discover/tv`
+    `3/trending/all/day`,
+    `3/trending/movie/day`,
+    `3/trending/tv/day`
   ];
   const railTitle = ['Top Rated', 'Popular', 'Upcoming', 'Now Playing', 'movie','series'];
 

@@ -11,7 +11,7 @@ import styles from './HomePage.module.css';
 
 const listings = ['Now Playing', 'Popular', 'Top Rated', 'Upcoming'];
 
-const discoverListings = ['Movies', 'Series']
+const discoverListings = ['Trending', 'Movies', 'Series']
 
 const HomePage = () => {
     const [marqueeData, setMarqueeData] = useState([]);
@@ -29,8 +29,9 @@ const HomePage = () => {
                 popular: data?.carouselData[1],
                 upcoming: data?.carouselData[2],
                 now_playing: data?.carouselData[3],
-                movies: data?.carouselData[4],
-                series: data?.carouselData[5],
+                trending: data?.carouselData[4],
+                movies: data?.carouselData[5],
+                series: data?.carouselData[6],
             })
             setIndividualCarousel(data?.carouselData[3]);
             setDiscoverData(data?.carouselData[4]);
@@ -98,7 +99,7 @@ const HomePage = () => {
                 })}
 
             </div>
-            {discoverData?.results?.length ? <Grid gridData={discoverData?.results} keyName={discoverData?.title} key={discoverData?.title}/> : null}
+            {discoverData?.results?.length ? <Grid gridData={discoverData?.results.slice(0, 18)} keyName={discoverData?.title} key={discoverData?.title}/> : null}
         
         </div>
     )
