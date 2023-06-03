@@ -4,12 +4,18 @@ import Carousel from '../components/HomePage/Carousel/Carousel';
 import HeroCarousel from '../components/HomePage/Hero/Hero';
 import Grid from '../components/Grid/Grid';
 import clsx from 'clsx';
-import { fetchHomePageData } from '../Services/Api/HomePageApi';
+import { fetchHomePageData, fetchIndividualCarousel, fetchDiscoverCarousel } from '../Services/Api/HomePageApi';
 import { setLoadingIndicatorVisibility } from '../components/Loader/Loader';
 import styles from './HomePage.module.css';
 
 
-const listings = ['Now Playing', 'Popular', 'Top Rated', 'Upcoming'];
+const listings = ['Popular', 'Now Playing', 'Top Rated', 'Upcoming'];
+
+const listingMapper = {
+    "trending": 'all',
+    "movies": 'movie',
+    "series": 'tv'
+}
 
 const discoverListings = ['Trending', 'Movies', 'Series']
 
@@ -20,21 +26,18 @@ const HomePage = () => {
     const [activeListing, setActiveListing] = useState(0);
     const [discoverListing, setDiscoverListing] = useState(0);
     const {storeData, setStoreData} = useContext(StoreContext)
-    
+
 
     useEffect(() => {
         fetchHomePageData().then(data => {
-            setStoreData({
-                top_rated: data?.carouselData[0],
-                popular: data?.carouselData[1],
-                upcoming: data?.carouselData[2],
-                now_playing: data?.carouselData[3],
-                trending: data?.carouselData[4],
-                movies: data?.carouselData[5],
-                series: data?.carouselData[6],
-            })
-            setIndividualCarousel(data?.carouselData[3]);
-            setDiscoverData(data?.carouselData[4]);
+            console.log(data)
+            setStoreData(
+            {homePage: {
+                popular: data?.carouselData[0],
+                trending: data?.carouselData[1],
+            }})
+            setIndividualCarousel(data?.carouselData[0]);
+            setDiscoverData(data?.carouselData[1]);
             setMarqueeData(data?.marquee);
         
         }).catch(error => {
@@ -47,15 +50,38 @@ const HomePage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    const onListingButtonClick = (listingName, index) => {
+    const onListingButtonClick = async (listingName, index) => {
         const listingParam = listingName.toLowerCase().replaceAll(' ', '_');
-        setIndividualCarousel(storeData[listingParam])
+        
+        if(!storeData.homePage[listingParam]) {
+            const newData = await fetchIndividualCarousel(listingParam);
+            setStoreData({homePage: {
+                ...storeData.homePage,
+                [listingParam]: newData
+            }});
+            setIndividualCarousel(newData)
+        } else {
+            setIndividualCarousel(storeData.homePage[listingParam])
+        }
         setActiveListing(index)
     }
 
-    const onDiscoverListingButtonClick = (listingName, index) => {
+    const onDiscoverListingButtonClick = async (listingName, index) => {
+      
         const listingParam = listingName.toLowerCase().replaceAll(' ', '_');
-        setDiscoverData(storeData[listingParam])
+
+        if(!storeData.homePage[listingParam]) {
+            const newData = await fetchDiscoverCarousel(listingMapper[listingParam]);
+            setStoreData({homePage: {
+                ...storeData.homePage,
+                [listingParam]: newData
+            }});
+            setDiscoverData(newData)
+        } else {
+            setDiscoverData(storeData.homePage[listingParam])
+        }
+
+     
         setDiscoverListing(index)
     }
 
