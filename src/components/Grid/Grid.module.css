@@ -14,23 +14,27 @@
   position: relative;
   width: 12.5vw;
   text-align: center;
-  height: 42vh;
+  height: 33vh;
   margin: auto 25px;
-  transition: 0.4s;
+  transition: 0.7s;
+  margin-bottom: 3%;
 }
 
 .cardContainer:hover {
-  filter: brightness(120%);
   transform: scale(1.4);
   position: relative;
   z-index: 5;
 }
 
 .cardContainer img {
-  height: 77%;
+  height: 100%;
   width: 100%;
   border-radius: 10px;
   transition: 0.4s;
+}
+
+.cardContainer:hover img {
+  filter: brightness(70%);
 }
 
 .cardContainer h1 {
@@ -44,21 +48,86 @@
 }
 
 .metadataContainer {
-  border: 1px solid red;
   position: absolute;
-  top: 50%;
+  top: 38%;
+  height: 62%;
+  opacity: 0;
+  border-radius: 10px;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 22, 1) 60%,
+    rgba(0, 0, 22, 0.8) 85%,
+    rgba(0, 0, 22, 0.6) 90%,
+    rgba(12, 12, 14, 0.4) 95%,
+    rgba(12, 12, 14, 0.106) 98%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+  transition: 0.8s;
+}
+
+.cardContainer:hover .metadataContainer {
+  opacity: 1;
+}
+
+.metadataTitle {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  font-size: 16px;
+  text-align: left;
+  width: 85%;
+  margin: auto;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .metadataOverview {
+  font-size: 10px;
+  min-height: 45px;
+  line-height: 14px;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  line-height: 14px;
+  text-align: left;
+  margin: auto;
+  width: 85%;
+}
+
+.metadataContentType {
+  position: absolute;
+  width: 100%;
+  top: 72%;
+  text-align: left;
+  margin: auto;
+  width: 85%;
   font-size: 10px;
+  color: gray;
+  font-weight: bolder;
+  left: 7%;
 }
 
 .viewMoreButton {
-  border: 1px solid black;
   background-color: #000081;
+  position: absolute;
+  margin: auto;
+  width: 85%;
+  top: 82%;
+  left: 7%;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border-radius: 3px;
+  z-index: 10;
+}
+
+.viewMoreButton:hover {
+  filter: brightness(140%);
 }

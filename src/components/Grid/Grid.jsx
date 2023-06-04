@@ -5,12 +5,18 @@ import noimage from '../../assets/images/noimage.png';
 import styles from './Grid.module.css';
 import clsx from 'clsx';
 
+const contentTypeMapper = {
+  movie: 'MOVIE',
+  tv: 'SERIES',
+};
+
 const Grid = ({ gridData, className, keyName }) => {
   const navigate = useNavigate();
+
   return (
     <div className={styles.gridContainer} key={keyName}>
       {gridData?.map((data, index) => {
-        console.log(data);
+        console.log(gridData);
         return (
           <div
             className={clsx(styles.cardContainer, className)}
@@ -29,12 +35,21 @@ const Grid = ({ gridData, className, keyName }) => {
                 alt="cool image should be here"
               />
               <div className={styles.metadataContainer}>
-                <div className={styles.metadataTitle}>{data.title}</div>
+                <div className={styles.metadataTitle}>
+                  {data.title || data.name}
+                </div>
                 <div className={styles.metadataOverview}>{data.overview}</div>
                 <div className={styles.metadataContentType}>
-                  {data.media_type}
+                  {contentTypeMapper[data.media_type]}
                 </div>
-                <div className={styles.viewMoreButton}>View More</div>
+                <div
+                  className={styles.viewMoreButton}
+                  onClick={() => {
+                    navigate(`/details/${data.title}/${data.id}`);
+                  }}
+                >
+                  VIEW MORE
+                </div>
               </div>
             </a>
           </div>
