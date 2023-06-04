@@ -32,7 +32,6 @@ const HomePage = () => {
   useEffect(() => {
     fetchHomePageData()
       .then((data) => {
-        console.log(data);
         setStoreData({
           homePage: {
             popular: data?.carouselData[0],
@@ -106,9 +105,6 @@ const HomePage = () => {
           key={individualCarousel?.title}
         />
       ) : null}
-      <br />
-      <br />
-      <br />
       <ListingNavigation
         listings={discoverListings}
         onClick={onDiscoverListingButtonClick}

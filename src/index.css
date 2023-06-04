@@ -1,6 +1,6 @@
 body {
   min-height: 100%;
-  width: 100%;
+  width: 100vw;
   padding: 0;
   margin: 0;
   overflow-y: scroll;
@@ -388,16 +388,6 @@ a {
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 1230px) {
-  /* NAVIGATION BAR */
-
-  .navbar {
-    height: 9vh;
-  }
-
-  .logo h1 {
-    font-size: 30px;
-  }
-
   /* SEARCH BAR SECTION */
   .searchbar {
     transform: translateY(15%);
@@ -482,7 +472,7 @@ a {
     float: left;
     margin-right: 40px;
     transform: translateY(330%);
-    font-size: 14px;
+    font-size: 10px;
   }
 
   .footer img {
@@ -495,7 +485,7 @@ a {
     position: relative;
     float: right;
     clear: right;
-    font-size: 14px;
+    font-size: 11px;
     margin: 0;
     transform: translateY(800%);
   }
@@ -511,11 +501,6 @@ a {
   .preloader:before {
     width: 28px;
     height: 28px;
-  }
-  /* NAVIGATION BAR */
-
-  .navbar {
-    height: 9vh;
   }
 
   .logo {

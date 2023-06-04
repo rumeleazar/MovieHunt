@@ -23,3 +23,23 @@
   font-family: Abril;
   font-size: 28px;
 }
+
+@media screen and (max-width: 490px) {
+  .navbar {
+    height: 8vh;
+  }
+
+  .logo {
+    width: 150px;
+    text-align: center;
+    height: 8.5vh;
+    position: relative;
+    transform: translateY(10%);
+    margin-left: 0;
+  }
+
+  .logo h1 {
+    font-size: 20px;
+    margin: 8% auto;
+  }
+}

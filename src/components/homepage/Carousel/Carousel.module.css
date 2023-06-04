@@ -103,3 +103,18 @@
 .leftNavArrow:hover .leftArrow {
   opacity: 1;
 }
+
+@media screen and (max-width: 490px) {
+  .cardContainer {
+    text-align: center;
+    height: 33vh;
+    margin: 0;
+    overflow: auto;
+    margin-left: 70px;
+  }
+
+  .cardContainer img {
+    height: 100%;
+    width: 39vw;
+  }
+}
