@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
-import CastCarousel from "./CastCarousel";
-import Footer from "../HomePage/Footer";
-import Navigation from "../NavBar/NavBar";
-import ReactImageFallback from "react-image-fallback";
-import noimage from "../../assets/images/noimage.png";
-import { useParams } from "react-router-dom";
-import { setLoadingIndicatorVisibility } from "../Loader/Loader";
-
+import React, { useState, useEffect } from 'react';
+import CastCarousel from './CastCarousel';
+import Footer from '../HomePage/Footer';
+import Navigation from '../NavBar/NavBar';
+import ReactImageFallback from 'react-image-fallback';
+import noimage from '../../assets/images/noimage.png';
+import { useParams } from 'react-router-dom';
+import { setLoadingIndicatorVisibility } from '../Loader/Loader';
 
 const MovieInfo = () => {
-  const {movieid} = useParams()
+  const { movieid } = useParams();
   const [featuredMovie, setFeaturedMovie] = useState([]);
   const [genres, setGenres] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -17,43 +16,39 @@ const MovieInfo = () => {
   const [search, setSearch] = useState('');
   const [load, setLoad] = useState(false);
 
-
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${movieid}?api_key=${process.env.REACT_APP_API}&language=en-US
-      `
+      `,
     )
       .then((data) => data.json())
       .then((data) => {
         setFeaturedMovie(data);
-        setGenres(data.genres );
+        setGenres(data.genres);
         setLoad(true);
-      setLoadingIndicatorVisibility(false);
+        setLoadingIndicatorVisibility(false);
       });
 
-      fetch(
-        `https://api.themoviedb.org/3/movie/${movieid}/reviews?api_key=${process.env.REACT_APP_API}`
-      )
-        .then((data) => data.json())
-        .then((data) => {
-          setReviews( [...data.results]);
-        });
+    fetch(
+      `https://api.themoviedb.org/3/movie/${movieid}/reviews?api_key=${process.env.REACT_APP_API}`,
+    )
+      .then((data) => data.json())
+      .then((data) => {
+        setReviews([...data.results]);
+      });
 
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleChange1 = (e) => {
-   e.preventDefault();
+    e.preventDefault();
     setSearch(e.target.value);
-  
   };
 
   const handleSearch1 = (e) => {
     e.preventDefault();
     setSearch(e.target.value);
   };
-
 
   return (
     <div>
@@ -70,8 +65,8 @@ const MovieInfo = () => {
             load
               ? {
                   backgroundImage: `url("https://image.tmdb.org/t/p/original/${featuredMovie.backdrop_path}")`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "cover",
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
                   opacity: 1,
                 }
               : { opacity: 0 }
@@ -146,11 +141,7 @@ const MovieInfo = () => {
               <div className="reviewAuthor">{review.author}</div>
               <div className="reviewContent">{review.content}</div>
               <h2>
-                <a
-                  href={review.url}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
+                <a href={review.url} rel="noopener noreferrer" target="_blank">
                   See full review
                 </a>
               </h2>
@@ -161,8 +152,6 @@ const MovieInfo = () => {
       <Footer />
     </div>
   );
-
-}
-
+};
 
 export default MovieInfo;

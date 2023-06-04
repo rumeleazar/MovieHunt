@@ -1,108 +1,105 @@
-  .carouselContainer {
-    width: 100%;
-    overflow: hidden;
-  }
+.carouselContainer {
+  width: 100%;
+  overflow: hidden;
+}
 
-  .carousel {
-    width: 100%;
-    margin: 0;
-    opacity: 1;
-  }
-  
-  .carouselTitle {
-    margin-top: 4%;
-  }
+.carousel {
+  width: 100%;
+  margin: 0;
+  opacity: 1;
+}
 
-  .cardContainer {
-    text-align: center;
-    height: 42vh;
-    margin: 0;
-    overflow: auto;
-    padding-top: 4%;
-  }
-  
-  .cardContainer p {
-    font-size: 15px;
-    line-height: 15px;
-    margin: 0;
-    margin-top: 10px;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  }
-  
-  .cardContainer img {
-    height: 85%;
-    width: 12.5vw;
-    border-radius: 10px;
-    margin: auto;
-    transition: 0.4s;
-  }
-  
-  .cardContainer img:hover {
-    filter: brightness(120%);
-    transform: scale(1.04);
-  }
-  
+.carouselTitle {
+  margin-top: 4%;
+}
 
-  .rightNavArrow {
-    height: 84%;
-    width: 3%;
-    position: absolute;
-    right: 0;
-    top: 1.9%;
-    z-index: 10;
-    border-radius: 10px 0 0 10px;
-  }
+.cardContainer {
+  text-align: center;
+  height: 42vh;
+  margin: 0;
+  overflow: auto;
+  padding-top: 4%;
+}
 
-  .rightNavArrow:hover {
-    cursor: pointer
-  }
+.cardContainer p {
+  font-size: 15px;
+  line-height: 15px;
+  margin: 0;
+  margin-top: 10px;
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+}
 
-  .rightArrow {
-    border: solid white;
-    border-width: 0 5px 5px 0;
-    display: inline-block;
-    position:absolute;
-    top: 45%;
-    right: 30%;
-    padding: 10px;
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    opacity: 0;
-  }
+.cardContainer img {
+  height: 85%;
+  width: 12.5vw;
+  border-radius: 10px;
+  margin: auto;
+  transition: 0.4s;
+}
 
-  .rightNavArrow:hover .rightArrow{
-   opacity: 1;
-  }
+.cardContainer img:hover {
+  filter: brightness(120%);
+  transform: scale(1.04);
+}
 
-  .leftNavArrow {
-    height: 84%;
-    width: 3%;
-    position: absolute;
-    left: 0;
-    top: 1.9%;
-    z-index: 10;
-    border-radius: 0 10px 10px 0;
-  }
+.rightNavArrow {
+  height: 84%;
+  width: 3%;
+  position: absolute;
+  right: 0;
+  top: 1.9%;
+  z-index: 10;
+  border-radius: 10px 0 0 10px;
+}
 
-  .leftNavArrow:hover {
-    cursor: pointer
-  }
+.rightNavArrow:hover {
+  cursor: pointer;
+}
 
-  .leftArrow {
-    border: solid white;
-    border-width: 0 5px 5px 0;
-    display: inline-block;
-    position:absolute;
-    top:45%;
-    left: 30%;
-    padding: 10px;
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-    opacity: 0;
-  }
+.rightArrow {
+  border: solid white;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  position: absolute;
+  top: 45%;
+  right: 30%;
+  padding: 10px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  opacity: 0;
+}
 
-  .leftNavArrow:hover .leftArrow{
-    opacity: 1;
-   }
+.rightNavArrow:hover .rightArrow {
+  opacity: 1;
+}
 
+.leftNavArrow {
+  height: 84%;
+  width: 3%;
+  position: absolute;
+  left: 0;
+  top: 1.9%;
+  z-index: 10;
+  border-radius: 0 10px 10px 0;
+}
 
+.leftNavArrow:hover {
+  cursor: pointer;
+}
+
+.leftArrow {
+  border: solid white;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  position: absolute;
+  top: 45%;
+  left: 30%;
+  padding: 10px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  opacity: 0;
+}
+
+.leftNavArrow:hover .leftArrow {
+  opacity: 1;
+}

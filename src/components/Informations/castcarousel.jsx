@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import ReactImageFallback from "react-image-fallback";
-import noimage from "../../assets/images/noimage.png";
+import React, { Component } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import ReactImageFallback from 'react-image-fallback';
+import noimage from '../../assets/images/noimage.png';
 
 class CastCarousel extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class CastCarousel extends Component {
   componentDidMount() {
     fetch(
       `https://api.themoviedb.org/3/movie/${this.props.id}/credits?api_key=${this.apiKey}
-          `
+          `,
     )
       .then((data) => data.json())
       .then((data) => {
@@ -66,7 +66,7 @@ class CastCarousel extends Component {
             <div className="castCardContainer" key={index}>
               <a
                 href={`/people/${cast.id}`}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: 'pointer' }}
                 onClick={() => {
                   this.props.history.push(`/people/${cast.id}`);
                 }}

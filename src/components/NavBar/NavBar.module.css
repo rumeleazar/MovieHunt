@@ -1,25 +1,25 @@
 .navbar {
-    width: 100vw;
-    height: 7vh;
-    background: rgba(0, 0 ,0 ,0.1);
-    position: absolute;
-    top: 0;
-    z-index: 10;
-    border-bottom: 1px solid rgba(100, 100, 100, 0.5)
+  width: 100vw;
+  height: 7vh;
+  background: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid rgba(100, 100, 100, 0.5);
 }
-  
+
 .logo {
-    width: 150px;
-    text-align: center;
-    height: 5vh;
-    position: relative;
-    float: left;
-    transform: translateY(-15%);
-    margin-left: 40px;
+  width: 150px;
+  text-align: center;
+  height: 5vh;
+  position: relative;
+  float: left;
+  transform: translateY(-15%);
+  margin-left: 40px;
 }
-  
+
 .logo h1 {
-    color: #000081;
-    font-family: Abril;
-    font-size: 28px;
+  color: #000081;
+  font-family: Abril;
+  font-size: 28px;
 }

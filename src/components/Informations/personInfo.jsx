@@ -1,31 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import Footer from "../HomePage/Footer";
-import Navigation from "../NavBar/NavBar";
-import { useNavigate } from "react-router-dom";
-import { setLoadingIndicatorVisibility } from "../Loader/Loader";
-
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import Footer from '../HomePage/Footer';
+import Navigation from '../NavBar/NavBar';
+import { useNavigate } from 'react-router-dom';
+import { setLoadingIndicatorVisibility } from '../Loader/Loader';
 
 const PersonInfo = () => {
   const [person, setPerson] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
   const [gender, setGender] = useState('');
   const [age, setAge] = useState('');
-  const [search, setSearch] =useState('');
+  const [search, setSearch] = useState('');
   const [load, setLoad] = useState(false);
-  const {peopleid} = useParams();
+  const { peopleid } = useParams();
   const navigate = useNavigate();
 
-
-  useEffect(()=> {
+  useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/person/${peopleid}?api_key=${process.env.REACT_APP_API}&language=en-US`
+      `https://api.themoviedb.org/3/person/${peopleid}?api_key=${process.env.REACT_APP_API}&language=en-US`,
     )
       .then((data) => data.json())
       .then((data) => {
         setPerson(data);
-        const gender = data.gender === 2 ? "Male" : "Female";
-        setGender(gender)
+        const gender = data.gender === 2 ? 'Male' : 'Female';
+        setGender(gender);
         if (data.birthday) {
           const age = new Date().getFullYear() - data.birthday.slice(0, 4);
           setAge(age);
@@ -36,24 +34,21 @@ const PersonInfo = () => {
       });
 
     fetch(
-      `https://api.themoviedb.org/3/person/${peopleid}/movie_credits?api_key=${process.env.REACT_APP_API}&language=en-US`
+      `https://api.themoviedb.org/3/person/${peopleid}/movie_credits?api_key=${process.env.REACT_APP_API}&language=en-US`,
     )
       .then((data) => data.json())
       .then((data) => {
-    
         const x = data.cast.filter(function (movies) {
           return movies.popularity > 13;
         });
-        setPopularMovies(x.splice(0,6))
-    
+        setPopularMovies(x.splice(0, 6));
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleChange1 = (e) => {
     e.preventDefault();
     setSearch(e.target.value);
-   
   };
 
   const handleSearch1 = (e) => {
@@ -98,11 +93,9 @@ const PersonInfo = () => {
           <div className="popMoviesCard" key={index}>
             <a
               href={`/details/${movie.title}/${movie.id}`}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: 'pointer' }}
               onClick={() => {
-                navigate(
-                  `/details/${movie.title}/${movie.id}`
-                );
+                navigate(`/details/${movie.title}/${movie.id}`);
               }}
             >
               <div className="popMoviesCardImage">
@@ -122,7 +115,6 @@ const PersonInfo = () => {
       <Footer />
     </div>
   );
-
-}
+};
 
 export default PersonInfo;

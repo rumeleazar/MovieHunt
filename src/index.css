@@ -8,7 +8,8 @@ body {
   position: absolute;
   background-color: rgba(12, 12, 14, 1);
   color: white;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 a:focus,
@@ -62,20 +63,19 @@ a {
 }
 
 @font-face {
-  src: url("./assets/fonts/Lato-Light.ttf");
+  src: url('./assets/fonts/Lato-Light.ttf');
   font-family: lato;
 }
 
 @font-face {
-  src: url("./assets/fonts/Caveat-Regular.ttf");
+  src: url('./assets/fonts/Caveat-Regular.ttf');
   font-family: caveat;
 }
 
 @font-face {
-  src: url("./assets/fonts/Orbitron-Black.ttf");
+  src: url('./assets/fonts/Orbitron-Black.ttf');
   font-family: Abril;
 }
-
 
 /* SEARCH BAR SECTION */
 .searchbar {
@@ -84,7 +84,6 @@ a {
   height: 10%;
   width: 20%;
   transform: translate(195%, 25%);
-
 }
 
 .searchbar input {
@@ -108,10 +107,6 @@ a {
   border: 0;
   cursor: pointer;
 }
-
-
-
-
 
 /* SEARCH PAGE SECTION */
 
@@ -169,7 +164,7 @@ a {
   line-height: 15px;
   margin: 0;
   margin-top: 10px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
 
 /* MOVIE INFO SECTION */
@@ -242,7 +237,7 @@ a {
   line-height: 15px;
   margin: 0;
   margin-top: 10px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
 
 .castCardContainer img {
@@ -556,8 +551,6 @@ a {
     width: 10px;
     transform: translateX(-320%) translateY(26%);
   }
-
-
 
   /* MOVIE INFO SECTION */
 

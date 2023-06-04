@@ -1,11 +1,9 @@
-import React from "react";
-import SearchBar from "./SearchBar";
-import { Link } from "react-router-dom";
+import React from 'react';
+import SearchBar from './SearchBar';
+import { Link } from 'react-router-dom';
 import styles from './NavBar.module.css';
 
-
-
-const Navigation = ({handleChange, handleSearch, search}) => {
+const Navigation = ({ handleChange, handleSearch, search }) => {
   return (
     <div className={styles.navbar}>
       <nav>
@@ -24,8 +22,6 @@ const Navigation = ({handleChange, handleSearch, search}) => {
       </nav>
     </div>
   );
-
-}
+};
 
 export default Navigation;
-

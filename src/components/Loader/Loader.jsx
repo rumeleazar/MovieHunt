@@ -1,26 +1,24 @@
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from 'react';
 import styles from './Loader.module.css';
-
 
 export let setLoadingIndicatorVisibility;
 
 const LoadingSpinner = (showOnMount = true) => {
-    const [showLoader, setShowLoader] = useState(showOnMount);
+  const [showLoader, setShowLoader] = useState(showOnMount);
 
-    useEffect(() => {
-        setLoadingIndicatorVisibility = setShowLoader;
+  useEffect(() => {
+    setLoadingIndicatorVisibility = setShowLoader;
 
-        return ()=> {
-            setLoadingIndicatorVisibility = null
-        }
-    }, [])
+    return () => {
+      setLoadingIndicatorVisibility = null;
+    };
+  }, []);
 
-  return showLoader ?  (
-    <div className={styles.preloaderContainer}> 
-        <div className={styles.preloader}/>
+  return showLoader ? (
+    <div className={styles.preloaderContainer}>
+      <div className={styles.preloader} />
     </div>
-   
   ) : null;
-}
+};
 
-export default LoadingSpinner
+export default LoadingSpinner;
