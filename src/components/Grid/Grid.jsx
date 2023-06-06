@@ -10,13 +10,12 @@ const contentTypeMapper = {
   tv: 'SERIES',
 };
 
-const Grid = ({ gridData, className, keyName }) => {
+const Grid = ({ gridData, className }) => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.gridContainer} key={keyName}>
+    <div className={styles.gridContainer}>
       {gridData?.map((data, index) => {
-        console.log(gridData);
         return (
           <div
             className={clsx(styles.cardContainer, className)}

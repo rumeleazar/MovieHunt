@@ -2,13 +2,13 @@ import React from 'react';
 import searchicon from '../../assets/images/searchicon.png';
 import { useNavigate } from 'react-router-dom';
 
-function SearchBar(props) {
+const SearchBar = ({ search, handleChange, handleSearch }) => {
   const navigate = useNavigate();
 
   function ButtonRedirect() {
-    if (props.search.search !== '') {
+    if (search.search !== '') {
       setTimeout(function () {
-        navigate(`/search/${props.search.search}`);
+        navigate(`/search/${search.search}`);
       }, 100);
     } else {
       navigate(window.location.pathname);
@@ -17,12 +17,12 @@ function SearchBar(props) {
 
   return (
     <div className="searchbar">
-      <form action="" onSubmit={props.handleSearch}>
+      <form action="" onSubmit={handleSearch}>
         <input
           type="text"
           placeholder="Search.."
           name="search"
-          onChange={props.handleChange}
+          onChange={handleChange}
         ></input>
         <button type="submit" onClick={ButtonRedirect}>
           <img src={searchicon} alt="search"></img>
@@ -30,6 +30,6 @@ function SearchBar(props) {
       </form>
     </div>
   );
-}
+};
 
 export default SearchBar;

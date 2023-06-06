@@ -8,7 +8,7 @@ import { fetchMovieSearchData } from '../../Services/Api/SearchApi';
 import { setLoadingIndicatorVisibility } from '../Loader/Loader';
 import styles from './Search.module.css';
 
-const SearchResults = ({ movies, search, ...props }) => {
+const SearchResults = ({ movies, search, handleChange }) => {
   const [searchResults, setSearchResults] = useState(search);
   const [moviesResults, setMoviesResults] = useState(movies);
 
@@ -30,10 +30,10 @@ const SearchResults = ({ movies, search, ...props }) => {
   );
 
   return (
-    <div>
+    <>
       <Navigation
         handleSearch={handleSearch}
-        handleChange={props.handleChange}
+        handleChange={handleChange}
         search={search}
       />
       <div className={styles.searchDescription}>
@@ -64,7 +64,7 @@ const SearchResults = ({ movies, search, ...props }) => {
         })}
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

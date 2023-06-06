@@ -39,9 +39,9 @@ const settings = {
   ),
   infinite: true,
   speed: 500,
-  slidesToShow: 6,
+  slidesToShow: 6.02,
   lazyLoad: true,
-  centerPadding: '85px',
+  centerPadding: '110px',
   slidesToScroll: 1,
   centerMode: true,
   draggable: false,
@@ -76,6 +76,7 @@ const settings = {
         centerMode: true,
         infinite: true,
         initialSlide: 2,
+        swipeToSlide: true,
       },
     },
     {
@@ -85,12 +86,13 @@ const settings = {
         slidesToScroll: 1,
         infinite: true,
         centerMode: false,
+        swipeToSlide: true,
       },
     },
   ],
 };
 
-const Carousel = (props) => {
+const Carousel = ({ movies }) => {
   const navigate = useNavigate();
   const [load, setLoad] = useState(false);
 
@@ -111,7 +113,7 @@ const Carousel = (props) => {
         }
       >
         <Slider {...settings}>
-          {props.movies.map((movie, index) => (
+          {movies.map((movie, index) => (
             <div
               className={styles.cardContainer}
               key={index}

@@ -21,7 +21,7 @@ const settings = {
   lazyLoad: 'anticipated',
 };
 
-const HeroCarousel = (props) => {
+const HeroCarousel = ({ marqueeData }) => {
   const [load, setLoad] = useState(true);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const HeroCarousel = (props) => {
       <div className={styles.heroBottomOverlay} />
       <div className={styles.heroCarouselContainer}>
         <Slider {...settings}>
-          {props.marqueeData?.map((movie, index) => (
+          {marqueeData?.map((movie, index) => (
             <div key={index}>
               <div className={styles.heroContainer}>
                 <div className={styles.heroOverlay} />

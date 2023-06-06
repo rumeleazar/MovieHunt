@@ -3,7 +3,7 @@ import { sendApiRequest } from './utils';
 export const fetchHomePageData = async () => {
   const marqueeEndpoint = [`3/movie/now_playing`];
 
-  const carouselUrlEndpoints = [`3/movie/popular`, `3/trending/all/day`];
+  const carouselUrlEndpoints = [`3/movie/popular`, `3/discover/movie`];
   try {
     const data = await Promise.all(
       [...marqueeEndpoint, ...carouselUrlEndpoints].map((url) =>
@@ -32,10 +32,16 @@ export const fetchIndividualCarousel = async (listingParam) => {
   return await sendApiRequest(`3/movie/${listingParam}`);
 };
 
-export const fetchDiscoverCarousel = async (listingParam) => {
-  return await sendApiRequest(`3/trending/${listingParam}/day`);
+export const fetchDiscoverCarousel = async (listingParam, genreList = []) => {
+  const parsedGenreList = genreList.join();
+  return await sendApiRequest(
+    `3/discover/${listingParam}?with_genres=${parsedGenreList}`,
+  );
 };
 
-export const fetchGenres = async (contentType) => {
-  return await sendApiRequest(`3/genre/${contentType}}/list`);
+export const fetchGenres = async () => {
+  return await Promise.all([
+    sendApiRequest(`3/genre/movie/list`),
+    sendApiRequest(`3/genre/tv/list`),
+  ]);
 };
