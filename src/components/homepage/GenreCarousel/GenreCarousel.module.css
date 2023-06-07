@@ -49,6 +49,18 @@
   -webkit-transform: rotate(-45deg);
 }
 
+.genreRightArrowInactive {
+  border: solid gray;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  position: absolute;
+  top: 25%;
+  right: 30%;
+  padding: 10px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
 .genreLeftNavArrow {
   height: 84%;
   width: 3%;

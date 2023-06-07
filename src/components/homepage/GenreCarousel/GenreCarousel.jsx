@@ -22,13 +22,6 @@ const NavigationArrow = ({
 };
 
 const settings = {
-  nextArrow: (
-    <NavigationArrow
-      customClassName={styles.genreRightNavArrow}
-      arrowClassName={styles.genreRightArrow}
-    />
-  ),
-
   infinite: false,
   speed: 500,
   slidesToShow: 10,
@@ -82,16 +75,31 @@ const settings = {
 };
 
 const GenreCarousel = ({ genres, activeGenres, onClick }) => {
-  const [navArrowState, setNavArrowState] = useState(false);
+  const [leftNavArrowState, setLeftNavArrowState] = useState(false);
+  const [rightNavArrowState, setRightNavArrowState] = useState(true);
   const afterSlideEvent = (_, nextSlide) => {
-    setNavArrowState(nextSlide !== 0);
+    setRightNavArrowState(nextSlide !== genres?.length - 10);
+    setLeftNavArrowState(nextSlide !== 0);
   };
 
   const prevArrow = (
     <NavigationArrow
       customClassName={styles.genreLeftNavArrow}
       arrowClassName={clsx(
-        navArrowState ? styles.genreLeftArrow : styles.genreLeftArrowInactive,
+        leftNavArrowState
+          ? styles.genreLeftArrow
+          : styles.genreLeftArrowInactive,
+      )}
+    />
+  );
+
+  const nextArrow = (
+    <NavigationArrow
+      customClassName={styles.genreRightNavArrow}
+      arrowClassName={clsx(
+        rightNavArrowState
+          ? styles.genreRightArrow
+          : styles.genreRightArrowInactive,
       )}
     />
   );
@@ -100,6 +108,7 @@ const GenreCarousel = ({ genres, activeGenres, onClick }) => {
     ...settings,
     beforeChange: afterSlideEvent,
     prevArrow: prevArrow,
+    nextArrow: nextArrow,
   };
   return (
     <div className={styles.genreCarousel}>
