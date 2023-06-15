@@ -60,3 +60,9 @@
     font-weight: bold;
   }
 }
+
+@media screen and (max-width: 490px) {
+  .listingsButtonContainer {
+    margin-bottom: 20px;
+  }
+}

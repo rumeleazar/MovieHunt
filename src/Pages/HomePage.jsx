@@ -4,6 +4,7 @@ import Carousel from '../components/HomePage/Carousel/Carousel';
 import HeroCarousel from '../components/HomePage/Hero/Hero';
 import Grid from '../components/Grid/Grid';
 import GenreCarousel from '../components/HomePage/GenreCarousel/GenreCarousel';
+import Dropdown from '../components/Dropdown/Dropdown';
 import ListingNavigation from '../components/HomePage/ListingNavigation/ListingNavigation.';
 import {
   fetchHomePageData,
@@ -31,7 +32,6 @@ const HomePage = () => {
   const [activeListing, setActiveListing] = useState(0);
   const [discoverListing, setDiscoverListing] = useState(0);
   const genreRef = useRef([]);
-
   useEffect(() => {
     fetchGenres()
       .then((data) => {
@@ -149,12 +149,20 @@ const HomePage = () => {
         activeListing={discoverListing}
       />
       {discoverGenre?.genres?.length ? (
-        <GenreCarousel
-          genres={discoverGenre?.genres}
-          activeGenres={activeCarouselGenre}
-          onClick={onGenreButtonClick}
-          key={`genre-listing-${discoverListing}`}
-        />
+        <>
+          <GenreCarousel
+            genres={discoverGenre?.genres}
+            activeGenres={activeCarouselGenre}
+            onClick={onGenreButtonClick}
+            key={`genre-listing-${discoverListing}`}
+          />
+
+          <Dropdown
+            genresData={discoverGenre?.genres}
+            onClick={onGenreButtonClick}
+            activeGenres={activeCarouselGenre}
+          />
+        </>
       ) : null}
       {discoverData?.results?.length ? (
         <Grid gridData={discoverData?.results.slice(0, 18)} />

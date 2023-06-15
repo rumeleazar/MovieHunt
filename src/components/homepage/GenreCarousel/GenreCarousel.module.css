@@ -98,3 +98,9 @@
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
 }
+
+@media screen and (max-width: 490px) {
+  .genreCarousel {
+    display: none;
+  }
+}

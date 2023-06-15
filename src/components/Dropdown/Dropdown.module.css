@@ -1,0 +1,59 @@
+.dropdownContainer {
+  width: 45vw;
+  position: relative;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+
+.dropdownButton {
+  border: 1px solid #232329;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: #232329;
+  color: white;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.activeButton {
+  border: 1px solid #000081;
+}
+
+.dropdownItemContainer {
+  background-color: #232329;
+  position: absolute;
+  top: 115%;
+  width: 100%;
+  z-index: 20;
+  border-radius: 5px;
+  opacity: 0;
+}
+
+input[type='checkbox'] {
+  margin-right: 5px;
+}
+
+.showDropdown {
+  opacity: 1;
+}
+
+.dropdownItem {
+  margin-bottom: 5px;
+  height: 25px;
+  color: gray;
+  display: flex;
+  align-items: center;
+}
+
+.genreActive {
+  color: white;
+}
+
+@media screen and (min-width: 490px) {
+  .dropdownContainer {
+    display: none;
+  }
+}
