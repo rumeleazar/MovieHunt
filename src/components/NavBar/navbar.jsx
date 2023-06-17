@@ -1,16 +1,20 @@
 import React from 'react';
 import SearchBar from './SearchBar';
-import { Link } from 'react-router-dom';
 import styles from './NavBar.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const Navigation = ({ handleChange, handleSearch, search }) => {
+  const navigate = useNavigate();
   return (
     <div className={styles.navbar}>
       <nav>
-        <div className={styles.logo}>
-          <Link to="/">
-            <h1>FLIX</h1>
-          </Link>
+        <div
+          className={styles.logo}
+          onClick={() => {
+            navigate('/');
+          }}
+        >
+          <h1>FLIX</h1>
         </div>
         <div>
           <SearchBar

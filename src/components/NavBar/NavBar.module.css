@@ -26,20 +26,23 @@
 
 @media screen and (max-width: 490px) {
   .navbar {
-    height: 8vh;
+    height: 7vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .logo {
-    width: 150px;
+    width: 70px;
     text-align: center;
-    height: 8.5vh;
+    height: 100%;
     position: relative;
-    transform: translateY(10%);
+    transform: translateY(0%);
     margin-left: 0;
   }
 
   .logo h1 {
     font-size: 20px;
-    margin: 8% auto;
   }
 }

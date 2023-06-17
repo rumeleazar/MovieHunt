@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CastCarousel from './CastCarousel';
-import Footer from '../HomePage/Footer';
+import Footer from '../HomePage/Footer/Footer';
 import Navigation from '../NavBar/NavBar';
 import ReactImageFallback from 'react-image-fallback';
 import noimage from '../../assets/images/noimage.png';
@@ -12,7 +12,6 @@ const MovieInfo = () => {
   const [featuredMovie, setFeaturedMovie] = useState([]);
   const [genres, setGenres] = useState([]);
   const [reviews, setReviews] = useState([]);
-
   const [search, setSearch] = useState('');
   const [load, setLoad] = useState(false);
 
@@ -122,7 +121,7 @@ const MovieInfo = () => {
           }
         >
           <h1>CAST</h1>
-          <CastCarousel id={movieid} />
+          {movieid ? <CastCarousel id={movieid} /> : null}
         </div>
         <br></br>
         <div

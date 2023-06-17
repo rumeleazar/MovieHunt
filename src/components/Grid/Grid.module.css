@@ -150,4 +150,8 @@
     border-radius: 10px;
     transition: 0.4s;
   }
+
+  .cardContainer:hover {
+    transform: none;
+  }
 }

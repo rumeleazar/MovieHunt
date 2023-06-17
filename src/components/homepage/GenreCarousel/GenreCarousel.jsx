@@ -74,7 +74,7 @@ const settings = {
   ],
 };
 
-const GenreCarousel = ({ genres, activeGenres, onClick }) => {
+const GenreCarousel = ({ genres, activeGenres, onClick, onClickProps }) => {
   const [leftNavArrowState, setLeftNavArrowState] = useState(false);
   const [rightNavArrowState, setRightNavArrowState] = useState(true);
   const afterSlideEvent = (_, nextSlide) => {
@@ -121,7 +121,7 @@ const GenreCarousel = ({ genres, activeGenres, onClick }) => {
                 className={clsx(styles.genreButton, {
                   [styles.genreActive]: isGenreActive,
                 })}
-                onClick={() => onClick(data.id)}
+                onClick={() => onClick({ ...onClickProps, genreId: data.id })}
               >
                 {data.name}
               </div>

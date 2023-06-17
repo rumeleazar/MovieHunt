@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Footer from '../HomePage/Footer';
+import Footer from '../HomePage/Footer/Footer';
 import Navigation from '../NavBar/NavBar';
 import { useNavigate } from 'react-router-dom';
 import { setLoadingIndicatorVisibility } from '../Loader/Loader';
+import styles from './PersonInfo.module.css';
 
 const PersonInfo = () => {
   const [person, setPerson] = useState([]);
@@ -58,7 +59,7 @@ const PersonInfo = () => {
 
   return (
     <div
-      className="personInformation"
+      className={styles.personInformation}
       style={
         load
           ? {
@@ -72,12 +73,12 @@ const PersonInfo = () => {
         handleChange={handleChange1}
         search={search}
       />
-      <div className="personBio">
+      <div className={styles.personBio}>
         <img
           src={`https://image.tmdb.org/t/p/original/${person.profile_path}`}
           alt="this is the card pic"
         ></img>
-        <div className="personInfoblock">
+        <div className={styles.personInfoblock}>
           <h1>{person.name}</h1>
           <h2>Born in {person.place_of_birth}</h2>
           <h2> Age: {age}</h2>
@@ -87,10 +88,10 @@ const PersonInfo = () => {
           <p>{person.biography}</p>
         </div>
       </div>
-      <div className="popularMovies">
+      <div className={styles.popularMovies}>
         <h1>Popular Movies</h1>
         {popularMovies.map((movie, index) => (
-          <div className="popMoviesCard" key={index}>
+          <div className={styles.popMoviesCard} key={index}>
             <a
               href={`/details/${movie.title}/${movie.id}`}
               style={{ cursor: 'pointer' }}
@@ -98,13 +99,13 @@ const PersonInfo = () => {
                 navigate(`/details/${movie.title}/${movie.id}`);
               }}
             >
-              <div className="popMoviesCardImage">
+              <div className={styles.popMoviesCardImage}>
                 <img
                   src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                   alt="this is the card pic"
                 ></img>
               </div>
-              <div className="popMoviesDescription">
+              <div className={styles.popMoviesDescription}>
                 <h1>{movie.original_title}</h1>
                 <p>{movie.overview}</p>
               </div>

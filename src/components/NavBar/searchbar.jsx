@@ -1,5 +1,6 @@
 import React from 'react';
 import searchicon from '../../assets/images/searchicon.png';
+import styles from './SearchBar.module.css';
 import { useNavigate } from 'react-router-dom';
 
 const SearchBar = ({ search, handleChange, handleSearch }) => {
@@ -16,7 +17,7 @@ const SearchBar = ({ search, handleChange, handleSearch }) => {
   }
 
   return (
-    <div className="searchbar">
+    <div className={styles.searchbar}>
       <form action="" onSubmit={handleSearch}>
         <input
           type="text"

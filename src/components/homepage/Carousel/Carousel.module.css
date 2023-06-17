@@ -119,4 +119,12 @@
     height: 100%;
     width: 39vw;
   }
+
+  .rightNavArrow {
+    display: none;
+  }
+
+  .leftNavArrow {
+    display: none;
+  }
 }

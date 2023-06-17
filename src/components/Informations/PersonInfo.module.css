@@ -1,0 +1,83 @@
+/* PERSON INFO SECTION */
+
+.personInformation {
+  width: 100%;
+  opacity: 0;
+  margin-top: 7vh;
+  padding-top: 100px;
+  transition: 1s;
+}
+
+.personBio {
+  width: 80%;
+  margin: auto;
+  margin-top: 40px;
+}
+.personBio img {
+  height: 100%;
+  width: 200px;
+  border: 1px solid #505050;
+  display: inline-block;
+  vertical-align: top;
+  transform: translateY(5%);
+}
+
+.personInfoblock {
+  width: 70%;
+  height: 96%;
+  position: relative;
+  display: inline-block;
+  line-height: 15px;
+  margin: 0 auto;
+  margin-left: 25px;
+  vertical-align: top;
+
+  padding: 0;
+}
+.personInfoblock h1 {
+  font-size: 27px;
+  font-weight: bolder;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.personInfoblock h2 {
+  font-size: 18px;
+}
+
+.personInfoblock p {
+  line-height: 20px;
+  font-size: 17px;
+}
+
+.popularMovies {
+  width: 80%;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.popMoviesCard {
+  border: 2px solid black;
+  margin-bottom: 60px;
+  height: 220px;
+  background-color: #202020;
+}
+
+.popMoviesCardImage {
+  width: 12%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 20px;
+}
+
+.popMoviesCard img {
+  width: 100%;
+  height: 100%;
+}
+
+.popMoviesDescription {
+  display: inline-block;
+
+  width: 85%;
+  height: 100%;
+}

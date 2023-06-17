@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './Dropdown.module.css';
 import clsx from 'clsx';
 
-const Dropdown = ({ genresData, onClick, activeGenres }) => {
+const Dropdown = ({ genresData, onClick, activeGenres, onClickProps }) => {
   const [showDropDown, setShowDropDown] = useState(false);
 
   return (
@@ -15,7 +15,15 @@ const Dropdown = ({ genresData, onClick, activeGenres }) => {
           setShowDropDown((current) => !current);
         }}
       >
-        Genre
+        <div>Genre</div>
+        <div className={styles.dropdownArrowContainer}>
+          <div
+            className={clsx(styles.dropdownArrow, {
+              [styles.arrowUp]: showDropDown,
+              [styles.arrowDown]: !showDropDown,
+            })}
+          />
+        </div>
       </div>
       <div
         className={clsx(styles.dropdownItemContainer, {
@@ -31,12 +39,13 @@ const Dropdown = ({ genresData, onClick, activeGenres }) => {
                 [styles.genreActive]: isGenreActive,
               })}
               key={index}
-              onClick={() => onClick(data.id)}
+              onClick={() => onClick({ ...onClickProps, genreId: data.id })}
             >
               <input
                 type="checkbox"
                 checked={isGenreActive}
                 className={styles.checkBox}
+                onChange={(e) => {}}
               />
               {data.name}
             </div>

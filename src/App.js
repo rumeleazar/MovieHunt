@@ -4,9 +4,9 @@ import './index.css';
 import Navigation from './components/NavBar/NavBar';
 import SearchResult from './components/SearchPage/Search';
 import MovieInfo from './components/Informations/MovieInfo';
-import Footer from './components/HomePage/Footer';
+import Footer from './components/HomePage/Footer/Footer';
 import PersonInfo from './components/Informations/PersonInfo';
-import HomePage from './Pages/HomePage';
+import HomePage from './Pages/HomePage/HomePage';
 import { StoreProvider } from './Services/Store/store';
 import LoadingSpinner from './components/Loader/Loader';
 

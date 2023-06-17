@@ -1,25 +1,22 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
-import { StoreContext } from '../Services/Store/store';
-import Carousel from '../components/HomePage/Carousel/Carousel';
-import HeroCarousel from '../components/HomePage/Hero/Hero';
-import Grid from '../components/Grid/Grid';
-import GenreCarousel from '../components/HomePage/GenreCarousel/GenreCarousel';
-import Dropdown from '../components/Dropdown/Dropdown';
-import ListingNavigation from '../components/HomePage/ListingNavigation/ListingNavigation.';
+import { StoreContext } from '../../Services/Store/store';
+import Carousel from '../../components/HomePage/Carousel/Carousel';
+import HeroCarousel from '../../components/HomePage/Hero/Hero';
+import Grid from '../../components/Grid/Grid';
+import GenreCarousel from '../../components/HomePage/GenreCarousel/GenreCarousel';
+import Dropdown from '../../components/Dropdown/Dropdown';
+import ListingNavigation from '../../components/HomePage/ListingNavigation/ListingNavigation.';
+import { fetchHomePageData, fetchGenres } from '../../Services/Api/HomePageApi';
 import {
-  fetchHomePageData,
-  fetchIndividualCarousel,
-  fetchDiscoverCarousel,
-  fetchGenres,
-} from '../Services/Api/HomePageApi';
-import { setLoadingIndicatorVisibility } from '../components/Loader/Loader';
+  onListingButtonClick,
+  onDiscoverListingButtonClick,
+  onGenreButtonClick,
+} from '../../Services/HomePageHelpers/utils';
+import { setLoadingIndicatorVisibility } from '../../components/Loader/Loader';
 import styles from './HomePage.module.css';
 
 const listings = ['Popular', 'Now Playing', 'Top Rated', 'Upcoming'];
-const listingMapper = {
-  movies: 'movie',
-  series: 'tv',
-};
+
 const discoverListings = ['Movies', 'Series'];
 
 const HomePage = () => {
@@ -32,6 +29,29 @@ const HomePage = () => {
   const [activeListing, setActiveListing] = useState(0);
   const [discoverListing, setDiscoverListing] = useState(0);
   const genreRef = useRef([]);
+  const onListingClickProps = {
+    storeData,
+    setStoreData,
+    setIndividualCarousel,
+    setActiveListing,
+  };
+
+  const onDiscoverListingClickProps = {
+    setActiveCarouselGenre,
+    setDiscoverGenre,
+    setDiscoverData,
+    setDiscoverListing,
+    genreRef,
+    storeData,
+    setStoreData,
+  };
+
+  const onGenreButtonClickProps = {
+    activeCarouselGenre,
+    discoverListing,
+    setActiveCarouselGenre,
+    setDiscoverData,
+  };
   useEffect(() => {
     fetchGenres()
       .then((data) => {
@@ -62,69 +82,6 @@ const HomePage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onListingButtonClick = async (listingName, index) => {
-    const listingParam = listingName.toLowerCase().replaceAll(' ', '_');
-    if (!storeData.homePage[listingParam]) {
-      const newCarouselData = await fetchIndividualCarousel(listingParam);
-      setStoreData({
-        homePage: {
-          ...storeData.homePage,
-          [listingParam]: newCarouselData,
-        },
-      });
-      setIndividualCarousel(newCarouselData);
-    } else {
-      setIndividualCarousel(storeData.homePage[listingParam]);
-    }
-    setActiveListing(index);
-  };
-
-  const onDiscoverListingButtonClick = async (listingName, index) => {
-    setActiveCarouselGenre([]);
-    setDiscoverGenre(genreRef.current[index]);
-    const listingParam = listingName.toLowerCase().replaceAll(' ', '_');
-
-    if (!storeData.homePage[listingParam]) {
-      const newDiscoverData = await fetchDiscoverCarousel(
-        listingMapper[listingParam],
-      );
-      setStoreData({
-        homePage: {
-          ...storeData.homePage,
-          [listingParam]: newDiscoverData,
-        },
-      });
-      setDiscoverData(newDiscoverData);
-    } else {
-      setDiscoverData(storeData.homePage[listingParam]);
-    }
-
-    setDiscoverListing(index);
-  };
-
-  const onGenreButtonClick = async (genreId) => {
-    let genreList = activeCarouselGenre;
-    const listingParam =
-      listingMapper[
-        discoverListings[discoverListing].toLowerCase().replaceAll(' ', '_')
-      ];
-
-    if (genreList.includes(genreId)) {
-      genreList = genreList.filter((data) => data !== genreId);
-      setActiveCarouselGenre(genreList);
-    } else {
-      genreList = [...genreList, genreId];
-      setActiveCarouselGenre(genreList);
-    }
-
-    const newDiscoverDataWithGenres = await fetchDiscoverCarousel(
-      listingParam,
-      genreList,
-    );
-
-    setDiscoverData(newDiscoverDataWithGenres);
-  };
-
   if (!marqueeData) {
     return null;
   }
@@ -133,6 +90,7 @@ const HomePage = () => {
     <>
       {marqueeData && <HeroCarousel marqueeData={marqueeData?.results} />}
       <ListingNavigation
+        onClickProps={onListingClickProps}
         listings={listings}
         onClick={onListingButtonClick}
         activeListing={activeListing}
@@ -144,6 +102,7 @@ const HomePage = () => {
         />
       ) : null}
       <ListingNavigation
+        onClickProps={onDiscoverListingClickProps}
         listings={discoverListings}
         onClick={onDiscoverListingButtonClick}
         activeListing={discoverListing}
@@ -151,6 +110,7 @@ const HomePage = () => {
       {discoverGenre?.genres?.length ? (
         <>
           <GenreCarousel
+            onClickProps={onGenreButtonClickProps}
             genres={discoverGenre?.genres}
             activeGenres={activeCarouselGenre}
             onClick={onGenreButtonClick}
@@ -158,6 +118,7 @@ const HomePage = () => {
           />
 
           <Dropdown
+            onClickProps={onGenreButtonClickProps}
             genresData={discoverGenre?.genres}
             onClick={onGenreButtonClick}
             activeGenres={activeCarouselGenre}
@@ -165,7 +126,14 @@ const HomePage = () => {
         </>
       ) : null}
       {discoverData?.results?.length ? (
-        <Grid gridData={discoverData?.results.slice(0, 18)} />
+        <>
+          <Grid gridData={discoverData?.results.slice(0, 18)} />
+          <div className={styles.viewMoreButton}>
+            {`View All ${discoverListings[discoverListing]} `}
+            <span className={styles.viewMoreArrow} />
+            <span className={styles.viewMoreArrow} />
+          </div>
+        </>
       ) : (
         <>
           <div className={styles.noMatchFound}>

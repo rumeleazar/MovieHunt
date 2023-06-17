@@ -1,0 +1,32 @@
+.noMatchFound {
+  width: 87vw;
+  margin: auto;
+  height: 115vh;
+}
+
+.viewMoreButton {
+  width: 150px;
+  position: absolute;
+  right: 5.5%;
+  transition: 0.3s;
+}
+
+.viewMoreArrow {
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-45deg) translate(1px, -4px);
+  -webkit-transform: rotate(-45deg) translate(1px, -1px);
+  transition: 0.3s;
+}
+
+.viewMoreButton:hover {
+  cursor: pointer;
+  color: #000081;
+}
+
+.viewMoreButton:hover .viewMoreArrow {
+  border: solid #000081;
+  border-width: 0 2px 2px 0;
+}

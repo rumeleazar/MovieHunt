@@ -1,0 +1,29 @@
+.searchbar {
+  margin: auto;
+  text-align: center;
+  height: 10%;
+  width: 20%;
+  transform: translate(195%, 25%);
+}
+
+.searchbar input {
+  height: 4vh;
+  width: 15vw;
+  border-radius: 20px;
+  color: white;
+  padding-left: 20px;
+  font-size: 18px;
+  background-color: black;
+  border: 1px solid white;
+}
+
+.searchbar button {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  transform: translate(-110%, 12%);
+  background-color: transparent;
+  color: white;
+  border: 0;
+  cursor: pointer;
+}
