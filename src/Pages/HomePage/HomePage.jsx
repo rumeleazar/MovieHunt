@@ -5,6 +5,7 @@ import HeroCarousel from '../../components/HomePage/Hero/Hero';
 import Grid from '../../components/Grid/Grid';
 import GenreCarousel from '../../components/HomePage/GenreCarousel/GenreCarousel';
 import Dropdown from '../../components/Dropdown/Dropdown';
+import clsx from 'clsx';
 import ListingNavigation from '../../components/HomePage/ListingNavigation/ListingNavigation.';
 import { fetchHomePageData, fetchGenres } from '../../Services/Api/HomePageApi';
 import {
@@ -20,6 +21,7 @@ const listings = ['Popular', 'Now Playing', 'Top Rated', 'Upcoming'];
 const discoverListings = ['Movies', 'Series'];
 
 const HomePage = () => {
+  const [onLoad, setOnLoad] = useState(false);
   const { storeData, setStoreData } = useContext(StoreContext);
   const [marqueeData, setMarqueeData] = useState([]);
   const [individualCarousel, setIndividualCarousel] = useState([]);
@@ -76,7 +78,10 @@ const HomePage = () => {
         throw error;
       })
       .finally(() => {
-        setLoadingIndicatorVisibility(false);
+        setTimeout(() => {
+          setLoadingIndicatorVisibility(false);
+          setOnLoad(true);
+        }, 1000);
       });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -87,7 +92,11 @@ const HomePage = () => {
   }
 
   return (
-    <>
+    <div
+      className={clsx(styles.homePageContainer, {
+        [styles.onLoad]: onLoad,
+      })}
+    >
       {marqueeData && <HeroCarousel marqueeData={marqueeData?.results} />}
       <ListingNavigation
         onClickProps={onListingClickProps}
@@ -141,7 +150,7 @@ const HomePage = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 

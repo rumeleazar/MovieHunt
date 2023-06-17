@@ -1,3 +1,15 @@
+.homePageContainer {
+  opacity: 0;
+  -moz-transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.onLoad {
+  opacity: 1;
+}
+
 .noMatchFound {
   width: 87vw;
   margin: auto;

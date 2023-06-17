@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -13,19 +13,21 @@ const settings = {
   infinite: true,
   fade: true,
   slidesToShow: 1,
+  slidesToScroll: 1,
   autoplay: true,
   speed: 1000,
-  autoplaySpeed: 6000,
+  autoplaySpeed: 5000,
   nextArrow: <Arrow />,
   prevArrow: <Arrow />,
-  lazyLoad: 'anticipated',
 };
 
 const HeroCarousel = ({ marqueeData }) => {
   const [load, setLoad] = useState(true);
+  const sliderRef = useRef();
 
   useEffect(() => {
     setLoad(true);
+    sliderRef.current.slickNext();
 
     return () => {
       setLoad(false);
@@ -45,7 +47,7 @@ const HeroCarousel = ({ marqueeData }) => {
     >
       <div className={styles.heroBottomOverlay} />
       <div className={styles.heroCarouselContainer}>
-        <Slider {...settings}>
+        <Slider {...settings} ref={sliderRef}>
           {marqueeData?.map((movie, index) => (
             <div key={index}>
               <div className={styles.heroContainer}>

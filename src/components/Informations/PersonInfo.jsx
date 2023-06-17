@@ -91,25 +91,24 @@ const PersonInfo = () => {
       <div className={styles.popularMovies}>
         <h1>Popular Movies</h1>
         {popularMovies.map((movie, index) => (
-          <div className={styles.popMoviesCard} key={index}>
-            <a
-              href={`/details/${movie.title}/${movie.id}`}
-              style={{ cursor: 'pointer' }}
-              onClick={() => {
-                navigate(`/details/${movie.title}/${movie.id}`);
-              }}
-            >
-              <div className={styles.popMoviesCardImage}>
-                <img
-                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                  alt="this is the card pic"
-                ></img>
-              </div>
-              <div className={styles.popMoviesDescription}>
-                <h1>{movie.original_title}</h1>
-                <p>{movie.overview}</p>
-              </div>
-            </a>
+          <div
+            className={styles.popMoviesCard}
+            key={index}
+            style={{ cursor: 'pointer' }}
+            onClick={() => {
+              navigate(`/details/${movie.title}/${movie.id}`);
+            }}
+          >
+            <div className={styles.popMoviesCardImage}>
+              <img
+                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                alt="this is the card pic"
+              ></img>
+            </div>
+            <div className={styles.popMoviesDescription}>
+              <h1>{movie.original_title}</h1>
+              <p>{movie.overview}</p>
+            </div>
           </div>
         ))}
       </div>

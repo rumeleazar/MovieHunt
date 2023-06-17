@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ScrollToTop from './Services/ScrollToTop';
 import './index.css';
 import Navigation from './components/NavBar/NavBar';
 import SearchResult from './components/SearchPage/Search';
@@ -38,6 +39,7 @@ const App = () => {
     <BrowserRouter>
       <StoreProvider>
         <LoadingSpinner />
+        <ScrollToTop />
         <Routes>
           <Route
             path="/"

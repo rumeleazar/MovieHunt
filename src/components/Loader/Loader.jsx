@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './Loader.module.css';
 
 export let setLoadingIndicatorVisibility;
+export let showLoader;
 
 const LoadingSpinner = (showOnMount = true) => {
   const [showLoader, setShowLoader] = useState(showOnMount);

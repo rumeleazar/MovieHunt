@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useNavigate } from 'react-router-dom';
 import { clsx } from 'clsx';
+import { setLoadingIndicatorVisibility } from '../../Loader/Loader';
 import noimage from '../../../assets/images/noimage.png';
 import styles from './Carousel.module.css';
 
@@ -116,21 +117,17 @@ const Carousel = ({ movies }) => {
             <div
               className={styles.cardContainer}
               key={index}
-              style={{ width: 253 }}
+              style={{ width: 253, cursor: 'pointer' }}
+              onClick={() => {
+                navigate(`/details/${movie.title}/${movie.id}`);
+                setLoadingIndicatorVisibility(true);
+              }}
             >
-              <a
-                href={`/details/${movie.title}/${movie.id}`}
-                style={{ cursor: 'pointer' }}
-                onClick={() => {
-                  navigate(`/details/${movie.title}/${movie.id}`);
-                }}
-              >
-                <ReactImageFallback
-                  src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                  fallbackImage={noimage}
-                  alt="cool image should be here"
-                />
-              </a>
+              <ReactImageFallback
+                src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                fallbackImage={noimage}
+                alt="cool image should be here"
+              />
             </div>
           ))}
         </Slider>

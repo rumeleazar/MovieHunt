@@ -4,6 +4,8 @@ import Footer from '../HomePage/Footer/Footer';
 import Navigation from '../NavBar/NavBar';
 import ReactImageFallback from 'react-image-fallback';
 import noimage from '../../assets/images/noimage.png';
+import styles from './MovieInfo.module.css';
+import clsx from 'clsx';
 import { useParams } from 'react-router-dom';
 import { setLoadingIndicatorVisibility } from '../Loader/Loader';
 
@@ -13,7 +15,7 @@ const MovieInfo = () => {
   const [genres, setGenres] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [search, setSearch] = useState('');
-  const [load, setLoad] = useState(false);
+  const [onLoad, setOnLoad] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -24,8 +26,12 @@ const MovieInfo = () => {
       .then((data) => {
         setFeaturedMovie(data);
         setGenres(data.genres);
-        setLoad(true);
-        setLoadingIndicatorVisibility(false);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setOnLoad(true);
+          setLoadingIndicatorVisibility(false);
+        }, 1000);
       });
 
     fetch(
@@ -50,18 +56,22 @@ const MovieInfo = () => {
   };
 
   return (
-    <div>
+    <div
+      className={clsx(styles.movieInfoContainer, {
+        [styles.onLoad]: onLoad,
+      })}
+    >
       <Navigation
         handleSearch={handleSearch1}
         handleChange={handleChange1}
         search={search}
       />
 
-      <div className="poster">
+      <div className={styles.poster}>
         <div
-          className="posterHeader"
+          className={styles.posterHeader}
           style={
-            load
+            onLoad
               ? {
                   backgroundImage: `url("https://image.tmdb.org/t/p/original/${featuredMovie.backdrop_path}")`,
                   backgroundRepeat: 'no-repeat',
@@ -71,23 +81,14 @@ const MovieInfo = () => {
               : { opacity: 0 }
           }
         >
-          <div
-            className="posterHeaderInfo"
-            style={
-              load
-                ? {
-                    opacity: 1,
-                  }
-                : { opacity: 0 }
-            }
-          >
+          <div className={styles.posterHeaderInfo}>
             <ReactImageFallback
               src={`https://image.tmdb.org/t/p/w300${featuredMovie.poster_path}`}
               fallbackImage={noimage}
               alt="cool image should be here"
             />
 
-            <div className="posterInformation">
+            <div className={styles.posterInformation}>
               <h1>{featuredMovie.original_title}</h1>
               {genres.map((element, index) => (
                 <p key={index}>{element.name}</p>
@@ -96,49 +97,28 @@ const MovieInfo = () => {
           </div>
         </div>
         <br></br>
-        <div
-          className="posterSummary"
-          style={
-            load
-              ? {
-                  opacity: 1,
-                }
-              : { opacity: 0 }
-          }
-        >
+        <div className={styles.posterSummary}>
           <h1>SUMMARY</h1>
           <p>{featuredMovie.overview}</p>
         </div>
         <br></br>
-        <div
-          className="castSummary"
-          style={
-            load
-              ? {
-                  opacity: 1,
-                }
-              : { opacity: 0 }
-          }
-        >
+        <div className={styles.castSummary}>
           <h1>CAST</h1>
-          {movieid ? <CastCarousel id={movieid} /> : null}
+          {movieid ? (
+            <CastCarousel
+              id={movieid}
+              carouselContainerClass={styles.castCarouselContainer}
+              cardContainerClass={styles.castCardContainer}
+            />
+          ) : null}
         </div>
         <br></br>
-        <div
-          className="reviewSection"
-          style={
-            load
-              ? {
-                  opacity: 1,
-                }
-              : { opacity: 0 }
-          }
-        >
+        <div className={styles.reviewSection}>
           <h1>REVIEWS</h1>
           {reviews.map((review, index) => (
-            <div className="reviewCard" key={index}>
-              <div className="reviewAuthor">{review.author}</div>
-              <div className="reviewContent">{review.content}</div>
+            <div className={styles.reviewCard} key={index}>
+              <div className={styles.reviewAuthor}>{review.author}</div>
+              <div className={styles.reviewContent}>{review.content}</div>
               <h2>
                 <a href={review.url} rel="noopener noreferrer" target="_blank">
                   See full review

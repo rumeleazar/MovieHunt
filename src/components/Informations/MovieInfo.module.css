@@ -1,0 +1,140 @@
+.movieInfoContainer {
+  opacity: 0;
+  -moz-transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.onLoad {
+  opacity: 1;
+}
+
+.posterHeader {
+  width: 100vw;
+  height: 90vh;
+  box-shadow: inset 0px -200px 300px #181818;
+  transition: 1s;
+}
+
+.posterHeaderInfo {
+  transform: translateY(230%);
+  color: white;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  transition: 1s;
+}
+
+.posterInformation {
+  padding: 10px;
+}
+
+.posterHeader img {
+  height: 180px;
+  width: 150px;
+  border-radius: 10px;
+}
+.posterHeader h1 {
+  margin: 20px 10px;
+}
+
+.posterHeader p {
+  display: inline-block;
+  margin: auto 12px;
+  margin-right: 5px;
+}
+
+.posterSummary {
+  margin: auto;
+  width: 70%;
+  font-size: 20px;
+  transition: 1s;
+}
+
+.castSummary {
+  width: 70%;
+  margin: auto;
+  transition: 1s;
+}
+
+.castCarouselContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.castCardContainer {
+  width: auto;
+  text-align: center;
+  height: 250px;
+}
+
+.castCardContainer p {
+  font-size: 15px;
+  line-height: 15px;
+  margin: 0;
+  margin-top: 10px;
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+}
+
+.castCardContainer img {
+  height: 80%;
+  width: 80%;
+  border-radius: 10px;
+  filter: brightness(85%);
+  margin: auto;
+}
+
+.castCardContainer img:hover {
+  filter: brightness(120%);
+}
+
+.reviewSection {
+  width: 70%;
+  margin: auto;
+  margin-bottom: 90px;
+  transition: 1s;
+}
+
+.reviewCard {
+  border: 2px solid black;
+  margin-bottom: 60px;
+  height: 180px;
+  text-align: center;
+  background-color: #202020;
+}
+
+.reviewCard h2 a {
+  text-align: justify;
+  margin-left: 20px;
+  font-size: 20px;
+  color: gray;
+  float: left;
+}
+
+.reviewCard h2 a:hover {
+  color: white;
+}
+
+.reviewAuthor {
+  height: 27%;
+  line-height: 50px;
+  margin: auto;
+  padding-left: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: justify;
+}
+
+.reviewContent {
+  line-height: 20px;
+  margin: auto;
+  text-align: justify;
+  height: 30%;
+  width: 96%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding: 5px;
+}

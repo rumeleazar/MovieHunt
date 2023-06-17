@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ReactImageFallback from 'react-image-fallback';
 import { useNavigate } from 'react-router-dom';
+import { setLoadingIndicatorVisibility } from '../Loader/Loader';
 import noimage from '../../assets/images/noimage.png';
 
 const settings = {
@@ -41,13 +42,13 @@ const settings = {
   ],
 };
 
-const CastCarousel = (props) => {
+const CastCarousel = ({ id, carouselContainerClass, cardContainerClass }) => {
   const [cast, setCast] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${props.id}/credits?api_key=${process.env.REACT_APP_API}`,
+      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API}`,
     )
       .then((data) => data.json())
       .then((data) => {
@@ -56,25 +57,25 @@ const CastCarousel = (props) => {
   }, []);
 
   return (
-    <div className="castCarouselContainer">
+    <div className={carouselContainerClass}>
       <Slider {...settings}>
         {cast.map((castData, index) => (
-          <div className="castCardContainer" key={index}>
-            <a
-              href={`/people/${castData.id}`}
-              style={{ cursor: 'pointer' }}
-              onClick={() => {
-                navigate(`/people/${castData.id}`);
-              }}
-            >
-              <ReactImageFallback
-                src={`https://image.tmdb.org/t/p/w300${castData.profile_path}`}
-                fallbackImage={noimage}
-                alt="cool image should be here"
-              />
+          <div
+            className={cardContainerClass}
+            key={index}
+            onClick={() => {
+              navigate(`/people/${castData.id}`);
+              setLoadingIndicatorVisibility(true);
+            }}
+            style={{ cursor: 'pointer' }}
+          >
+            <ReactImageFallback
+              src={`https://image.tmdb.org/t/p/w300${castData.profile_path}`}
+              fallbackImage={noimage}
+              alt="cool image should be here"
+            />
 
-              <p>{castData.name}</p>
-            </a>
+            <p>{castData.name}</p>
           </div>
         ))}
       </Slider>
