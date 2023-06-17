@@ -14,7 +14,7 @@ const Navigation = ({ handleChange, handleSearch, search }) => {
             navigate('/');
           }}
         >
-          <h1>FLIX</h1>
+          <h1>MVhunt</h1>
         </div>
         <div>
           <SearchBar
