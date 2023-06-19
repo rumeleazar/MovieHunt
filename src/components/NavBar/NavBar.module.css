@@ -43,7 +43,7 @@
     height: 100%;
     position: relative;
     transform: translateY(0%);
-    margin-left: 0;
+    margin-left: 15px;
   }
 
   .logo h1 {

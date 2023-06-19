@@ -27,3 +27,29 @@
   border: 0;
   cursor: pointer;
 }
+
+@media screen and (max-width: 490px) {
+  .searchbar {
+    transform: translate(10%, 25%);
+    float: right;
+    width: 58%;
+    height: 7vh;
+  }
+
+  .searchbar input {
+    height: 3vh;
+    width: 70%;
+    transform: translateY(5%);
+  }
+
+  .searchbar button {
+    height: 22px;
+    width: 10px;
+    transform: translateX(-260%) translateY(12%);
+  }
+
+  .searchbar img {
+    height: 16px;
+    width: 16px;
+  }
+}

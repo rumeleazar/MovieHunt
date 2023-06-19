@@ -20,7 +20,6 @@ const Grid = ({ gridData, className }) => {
         return (
           <div
             className={clsx(styles.cardContainer, className)}
-            key={`${data.id}_${index}_${data.title || data.name}`}
             style={{ cursor: 'pointer' }}
             onClick={() => {
               navigate(`/details/${data.title}/${data.id}`);

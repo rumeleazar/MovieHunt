@@ -111,8 +111,8 @@
     text-align: center;
     height: 33vh;
     margin: 0;
+    margin-left: 10px;
     overflow: auto;
-    margin-left: 70px;
   }
 
   .cardContainer img {

@@ -84,9 +84,12 @@ const settings = {
       breakpoint: 480,
       settings: {
         slidesToShow: 2.4,
-        infinite: true,
+        infinite: false,
         centerMode: false,
         swipeToSlide: true,
+        swipe: true,
+        fade: false,
+        draggable: true,
       },
     },
   ],
