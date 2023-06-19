@@ -89,7 +89,7 @@ const settings = {
         swipeToSlide: true,
         swipe: true,
         fade: false,
-        draggable: true,
+        draggable: false,
       },
     },
   ],
