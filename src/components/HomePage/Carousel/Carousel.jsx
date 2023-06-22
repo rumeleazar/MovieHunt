@@ -122,7 +122,7 @@ const Carousel = ({ movies }) => {
               key={index}
               style={{ width: 253, cursor: 'pointer' }}
               onClick={() => {
-                navigate(`/details/${movie.title}/${movie.id}`);
+                navigate(`/details/movie/${movie.id}`);
                 setLoadingIndicatorVisibility(true);
               }}
             >

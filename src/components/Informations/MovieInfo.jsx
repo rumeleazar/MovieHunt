@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 import { setLoadingIndicatorVisibility } from '../Loader/Loader';
 
 const MovieInfo = () => {
-  const { movieid } = useParams();
+  const { mediatype, movieid } = useParams();
   const [featuredMovie, setFeaturedMovie] = useState([]);
   const [genres, setGenres] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -19,7 +19,7 @@ const MovieInfo = () => {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${movieid}?api_key=${process.env.REACT_APP_API}&language=en-US
+      `https://api.themoviedb.org/3/${mediatype}/${movieid}?api_key=${process.env.REACT_APP_API}&language=en-US
       `,
     )
       .then((data) => data.json())
@@ -35,7 +35,7 @@ const MovieInfo = () => {
       });
 
     fetch(
-      `https://api.themoviedb.org/3/movie/${movieid}/reviews?api_key=${process.env.REACT_APP_API}`,
+      `https://api.themoviedb.org/3/${mediatype}/${movieid}/reviews?api_key=${process.env.REACT_APP_API}`,
     )
       .then((data) => data.json())
       .then((data) => {
@@ -89,7 +89,9 @@ const MovieInfo = () => {
             />
 
             <div className={styles.posterInformation}>
-              <h1>{featuredMovie.original_title}</h1>
+              <h1>
+                {featuredMovie.original_title || featuredMovie.original_name}
+              </h1>
               {genres.map((element, index) => (
                 <p key={index}>{element.name}</p>
               ))}
@@ -107,6 +109,7 @@ const MovieInfo = () => {
           {movieid ? (
             <CastCarousel
               id={movieid}
+              mediaType={mediatype}
               carouselContainerClass={styles.castCarouselContainer}
               cardContainerClass={styles.castCardContainer}
             />

@@ -68,7 +68,7 @@ const App = () => {
               />
             }
           />
-          <Route path="/details/:movietitle/:movieid" element={<MovieInfo />} />
+          <Route path="/details/:mediatype/:movieid" element={<MovieInfo />} />
           <Route path="/people/:peopleid" element={<PersonInfo />} />
         </Routes>
       </StoreProvider>

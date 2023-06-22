@@ -42,13 +42,18 @@ const settings = {
   ],
 };
 
-const CastCarousel = ({ id, carouselContainerClass, cardContainerClass }) => {
+const CastCarousel = ({
+  id,
+  mediaType,
+  carouselContainerClass,
+  cardContainerClass,
+}) => {
   const [cast, setCast] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API}`,
+      `https://api.themoviedb.org/3/${mediaType}/${id}/credits?api_key=${process.env.REACT_APP_API}`,
     )
       .then((data) => data.json())
       .then((data) => {

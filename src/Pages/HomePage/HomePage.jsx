@@ -19,6 +19,7 @@ import styles from './HomePage.module.css';
 const listings = ['Popular', 'Now Playing', 'Top Rated', 'Upcoming'];
 
 const discoverListings = ['Movies', 'Series'];
+const mediaTypeListings = ['movie', 'tv'];
 
 const HomePage = () => {
   const [onLoad, setOnLoad] = useState(false);
@@ -136,7 +137,10 @@ const HomePage = () => {
       ) : null}
       {discoverData?.results?.length ? (
         <>
-          <Grid gridData={discoverData?.results.slice(0, 18)} />
+          <Grid
+            gridData={discoverData?.results.slice(0, 18)}
+            mediaType={mediaTypeListings[discoverListing]}
+          />
           <div className={styles.viewMoreButton}>
             {`View All ${discoverListings[discoverListing]} `}
             <span className={styles.viewMoreArrow} />

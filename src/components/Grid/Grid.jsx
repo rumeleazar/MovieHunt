@@ -11,18 +11,18 @@ const contentTypeMapper = {
   tv: 'SERIES',
 };
 
-const Grid = ({ gridData, className }) => {
+const Grid = ({ gridData, className, mediaType }) => {
   const navigate = useNavigate();
 
   return (
     <div className={styles.gridContainer}>
-      {gridData?.map((data, index) => {
+      {gridData?.map((data) => {
         return (
           <div
             className={clsx(styles.cardContainer, className)}
             style={{ cursor: 'pointer' }}
             onClick={() => {
-              navigate(`/details/${data.title}/${data.id}`);
+              navigate(`/details/${mediaType}/${data.id}`);
               setLoadingIndicatorVisibility(true);
             }}
           >
@@ -42,7 +42,7 @@ const Grid = ({ gridData, className }) => {
               <div
                 className={styles.viewMoreButton}
                 onClick={() => {
-                  navigate(`/details/${data.title}/${data.id}`);
+                  navigate(`/details/${mediaType}/${data.id}`);
                   setLoadingIndicatorVisibility(true);
                 }}
               >

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -15,24 +15,35 @@ const settings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  speed: 1000,
-  autoplaySpeed: 5000,
+  speed: 2000,
   nextArrow: <Arrow />,
   prevArrow: <Arrow />,
 };
 
 const HeroCarousel = ({ marqueeData }) => {
   const sliderRef = useRef();
+  const [autoplaySpeed, setAutoplaySpeed] = useState(0);
 
-  useLayoutEffect(() => {
-    sliderRef.current.slickNext();
-  }, []);
+  const onCarouselBeforeChange = (prevIndex, newIndex) => {
+    if (newIndex === -1) {
+      setAutoplaySpeed(5000);
+    }
+  };
+
+  const modifiedSettings = {
+    ...settings,
+    autoplaySpeed: autoplaySpeed,
+  };
 
   return (
     <div className={styles.heroCarousel}>
       <div className={styles.heroBottomOverlay} />
       <div className={styles.heroCarouselContainer}>
-        <Slider {...settings} ref={sliderRef}>
+        <Slider
+          {...modifiedSettings}
+          ref={sliderRef}
+          beforeChange={onCarouselBeforeChange}
+        >
           {marqueeData?.map((movie, index) => (
             <div key={index}>
               <div className={styles.heroContainer}>
