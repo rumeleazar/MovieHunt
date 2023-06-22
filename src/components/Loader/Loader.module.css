@@ -66,3 +66,10 @@
     transform: perspective(500px) rotateX(0deg) rotateY(20deg) rotateZ(0deg);
   }
 }
+
+@media screen and (max-width: 490px) {
+  .preloader {
+    left: auto;
+    right: 37%;
+  }
+}

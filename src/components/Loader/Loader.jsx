@@ -8,6 +8,12 @@ const LoadingSpinner = (showOnMount = true) => {
   const [showLoader, setShowLoader] = useState(showOnMount);
 
   useEffect(() => {
+    !!showLoader
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'scroll');
+  }, [showLoader]);
+
+  useEffect(() => {
     setLoadingIndicatorVisibility = setShowLoader;
 
     return () => {
