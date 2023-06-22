@@ -1,7 +1,7 @@
 .heroCarousel {
   height: 81vh;
   width: 100vw;
-  opacity: 0;
+  opacity: 1;
   position: relative;
 }
 
@@ -101,7 +101,7 @@
 
 @media screen and (max-width: 490px) {
   .heroCarousel {
-    opacity: 0;
+    opacity: 1;
     position: relative;
     height: 45vh;
   }

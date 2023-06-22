@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -22,29 +22,14 @@ const settings = {
 };
 
 const HeroCarousel = ({ marqueeData }) => {
-  const [load, setLoad] = useState(true);
   const sliderRef = useRef();
 
-  useEffect(() => {
-    setLoad(true);
+  useLayoutEffect(() => {
     sliderRef.current.slickNext();
-
-    return () => {
-      setLoad(false);
-    };
   }, []);
 
   return (
-    <div
-      className={styles.heroCarousel}
-      style={
-        load
-          ? {
-              opacity: 1,
-            }
-          : { opacity: 0 }
-      }
-    >
+    <div className={styles.heroCarousel}>
       <div className={styles.heroBottomOverlay} />
       <div className={styles.heroCarouselContainer}>
         <Slider {...settings} ref={sliderRef}>
