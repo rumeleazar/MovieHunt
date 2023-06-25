@@ -24,6 +24,7 @@ export const fetchHomePageData = async () => {
 
     return { marquee: marqueeData, carouselData: newCarouselData };
   } catch (error) {
+    console.error(error);
     return [];
   }
 };

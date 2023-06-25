@@ -4,6 +4,10 @@ import Footer from '../HomePage/Footer/Footer';
 import Navigation from '../NavBar/NavBar';
 import LazyImageDefaultFallback from '../LazyImage/LazyImageDefaultFallback';
 import styles from './MovieInfo.module.css';
+import {
+  fetchAssetInfo,
+  fetchAssetReviews,
+} from '../../Services/Api/MovieInfo.Api';
 import clsx from 'clsx';
 import { useParams } from 'react-router-dom';
 import { setLoadingIndicatorVisibility } from '../Loader/Loader';
@@ -17,10 +21,7 @@ const MovieInfo = () => {
   const [onLoad, setOnLoad] = useState(false);
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/${mediatype}/${movieid}?api_key=${process.env.REACT_APP_API}&language=en-US
-      `,
-    )
+    fetchAssetInfo({ mediatype, movieid })
       .then((data) => data.json())
       .then((data) => {
         setFeaturedMovie(data);
@@ -33,9 +34,7 @@ const MovieInfo = () => {
         }, 1000);
       });
 
-    fetch(
-      `https://api.themoviedb.org/3/${mediatype}/${movieid}/reviews?api_key=${process.env.REACT_APP_API}`,
-    )
+    fetchAssetReviews({ mediatype, movieid })
       .then((data) => data.json())
       .then((data) => {
         setReviews([...data.results]);

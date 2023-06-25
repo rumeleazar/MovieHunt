@@ -3,6 +3,10 @@ import { useParams } from 'react-router-dom';
 import Footer from '../HomePage/Footer/Footer';
 import Navigation from '../NavBar/NavBar';
 import { useNavigate } from 'react-router-dom';
+import {
+  fetchPersonInfo,
+  fetchMovieCredits,
+} from '../../Services/Api/PersonInfoApi';
 import { setLoadingIndicatorVisibility } from '../Loader/Loader';
 import styles from './PersonInfo.module.css';
 
@@ -17,9 +21,7 @@ const PersonInfo = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/person/${peopleid}?api_key=${process.env.REACT_APP_API}&language=en-US`,
-    )
+    fetchPersonInfo({ peopleid })
       .then((data) => data.json())
       .then((data) => {
         setPerson(data);
@@ -34,9 +36,7 @@ const PersonInfo = () => {
         setLoadingIndicatorVisibility(false);
       });
 
-    fetch(
-      `https://api.themoviedb.org/3/person/${peopleid}/movie_credits?api_key=${process.env.REACT_APP_API}&language=en-US`,
-    )
+    fetchMovieCredits({ peopleid })
       .then((data) => data.json())
       .then((data) => {
         const x = data.cast.filter(function (movies) {
