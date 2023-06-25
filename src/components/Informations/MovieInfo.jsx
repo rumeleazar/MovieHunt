@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CastCarousel from './CastCarousel';
 import Footer from '../HomePage/Footer/Footer';
 import Navigation from '../NavBar/NavBar';
-import ReactImageFallback from 'react-image-fallback';
-import noimage from '../../assets/images/noimage.png';
+import LazyImageDefaultFallback from '../LazyImage/LazyImageDefaultFallback';
 import styles from './MovieInfo.module.css';
 import clsx from 'clsx';
 import { useParams } from 'react-router-dom';
@@ -82,10 +81,8 @@ const MovieInfo = () => {
           }
         >
           <div className={styles.posterHeaderInfo}>
-            <ReactImageFallback
+            <LazyImageDefaultFallback
               src={`https://image.tmdb.org/t/p/w300${featuredMovie.poster_path}`}
-              fallbackImage={noimage}
-              alt="cool image should be here"
             />
 
             <div className={styles.posterInformation}>

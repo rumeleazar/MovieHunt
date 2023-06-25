@@ -9,7 +9,6 @@
     "clsx": "^1.2.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-image-fallback": "^8.0.0",
     "react-router-dom": "^6.0.0-alpha.2",
     "react-scripts": "^5.0.1",
     "react-slick": "^0.25.2",

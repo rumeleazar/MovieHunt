@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import ReactImageFallback from 'react-image-fallback';
+import LazyImageDefaultFallback from '../LazyImage/LazyImageDefaultFallback';
 import { useNavigate } from 'react-router-dom';
 import { setLoadingIndicatorVisibility } from '../Loader/Loader';
-import noimage from '../../assets/images/noimage.png';
 
 const settings = {
   infinite: false,
@@ -74,10 +73,8 @@ const CastCarousel = ({
             }}
             style={{ cursor: 'pointer' }}
           >
-            <ReactImageFallback
+            <LazyImageDefaultFallback
               src={`https://image.tmdb.org/t/p/w300${castData.profile_path}`}
-              fallbackImage={noimage}
-              alt="cool image should be here"
             />
 
             <p>{castData.name}</p>

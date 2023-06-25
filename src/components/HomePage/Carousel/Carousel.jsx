@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import ReactImageFallback from 'react-image-fallback';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useNavigate } from 'react-router-dom';
 import { clsx } from 'clsx';
+import LazyImageDefaultFallback from '../../LazyImage/LazyImageDefaultFallback';
 import { setLoadingIndicatorVisibility } from '../../Loader/Loader';
-import noimage from '../../../assets/images/noimage.png';
 import styles from './Carousel.module.css';
 
 const NavigationArrow = ({
@@ -126,10 +125,8 @@ const Carousel = ({ movies }) => {
                 setLoadingIndicatorVisibility(true);
               }}
             >
-              <ReactImageFallback
+              <LazyImageDefaultFallback
                 src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                fallbackImage={noimage}
-                alt="cool image should be here"
               />
             </div>
           ))}

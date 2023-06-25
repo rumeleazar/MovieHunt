@@ -2,8 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../HomePage/Footer/Footer';
 import Navigation from '../NavBar/NavBar';
-import ReactImageFallback from 'react-image-fallback';
-import noimage from '../../assets/images/noimage.png';
+import LazyImageDefaultFallback from '../LazyImage/LazyImageDefaultFallback';
 import { fetchMovieSearchData } from '../../Services/Api/SearchApi';
 import { setLoadingIndicatorVisibility } from '../Loader/Loader';
 import styles from './Search.module.css';
@@ -51,10 +50,8 @@ const SearchResults = ({ movies, search, handleChange }) => {
                 }}
                 style={{ cursor: 'pointer' }}
               >
-                <ReactImageFallback
+                <LazyImageDefaultFallback
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                  fallbackImage={noimage}
-                  alt="cool image should be here"
                 />
 
                 <h1>{movie.title}</h1>

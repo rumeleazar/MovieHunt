@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import ReactImageFallback from 'react-image-fallback';
-import noimage from '../../assets/images/noimage.png';
+import LazyImageDefaultFallback from '../LazyImage/LazyImageDefaultFallback';
 import { setLoadingIndicatorVisibility } from '../Loader/Loader';
 import styles from './Grid.module.css';
 import clsx from 'clsx';
@@ -26,10 +25,8 @@ const Grid = ({ gridData, className, mediaType }) => {
               setLoadingIndicatorVisibility(true);
             }}
           >
-            <ReactImageFallback
+            <LazyImageDefaultFallback
               src={`https://image.tmdb.org/t/p/w300${data.poster_path}`}
-              fallbackImage={noimage}
-              alt="cool image should be here"
             />
             <div className={styles.metadataContainer}>
               <div className={styles.metadataTitle}>

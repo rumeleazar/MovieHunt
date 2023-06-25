@@ -65,6 +65,7 @@ const HomePage = () => {
       });
     fetchHomePageData()
       .then((data) => {
+        console.log(data);
         setStoreData({
           homePage: {
             popular: data?.carouselData[0],
