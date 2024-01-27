@@ -22,7 +22,6 @@ const MovieInfo = () => {
 
   useEffect(() => {
     fetchAssetInfo({ mediatype, movieid })
-      .then((data) => data.json())
       .then((data) => {
         setFeaturedMovie(data);
         setGenres(data.genres);
@@ -34,11 +33,9 @@ const MovieInfo = () => {
         }, 1000);
       });
 
-    fetchAssetReviews({ mediatype, movieid })
-      .then((data) => data.json())
-      .then((data) => {
-        setReviews([...data.results]);
-      });
+    fetchAssetReviews({ mediatype, movieid }).then((data) => {
+      setReviews([...data.results]);
+    });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -21,29 +21,25 @@ const PersonInfo = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchPersonInfo({ peopleid })
-      .then((data) => data.json())
-      .then((data) => {
-        setPerson(data);
-        const gender = data.gender === 2 ? 'Male' : 'Female';
-        setGender(gender);
-        if (data.birthday) {
-          const age = new Date().getFullYear() - data.birthday.slice(0, 4);
-          setAge(age);
-        }
+    fetchPersonInfo({ peopleid }).then((data) => {
+      setPerson(data);
+      const gender = data.gender === 2 ? 'Male' : 'Female';
+      setGender(gender);
+      if (data.birthday) {
+        const age = new Date().getFullYear() - data.birthday.slice(0, 4);
+        setAge(age);
+      }
 
-        setLoad(true);
-        setLoadingIndicatorVisibility(false);
-      });
+      setLoad(true);
+      setLoadingIndicatorVisibility(false);
+    });
 
-    fetchMovieCredits({ peopleid })
-      .then((data) => data.json())
-      .then((data) => {
-        const x = data.cast.filter(function (movies) {
-          return movies.popularity > 13;
-        });
-        setPopularMovies(x.splice(0, 6));
+    fetchMovieCredits({ peopleid }).then((data) => {
+      const x = data.cast.filter(function (movies) {
+        return movies.popularity > 13;
       });
+      setPopularMovies(x.splice(0, 6));
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -96,7 +92,7 @@ const PersonInfo = () => {
             key={index}
             style={{ cursor: 'pointer' }}
             onClick={() => {
-              navigate(`/details/${movie.title}/${movie.id}`);
+              navigate(`/details/movie/${movie.id}`);
             }}
           >
             <div className={styles.popMoviesCardImage}>

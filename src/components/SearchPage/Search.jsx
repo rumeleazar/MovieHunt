@@ -44,9 +44,9 @@ const SearchResults = ({ movies, search, handleChange }) => {
           return (
             <div className={styles.searchCardContainer} key={index}>
               <a
-                href={`/details/${movie.title}/${movie.id}`}
+                href={`/details/movie/${movie.id}`}
                 onClick={() => {
-                  navigate(`/details/${movie.title}/${movie.id}`);
+                  navigate(`/details/movie/${movie.id}`);
                 }}
                 style={{ cursor: 'pointer' }}
               >
