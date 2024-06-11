@@ -4,7 +4,7 @@ A movie searching website created using React. This website is powered by the TM
 
 ## Check deployed WIP here: ## 
 
-https://mvhunt.netlify.com/
+https://mvhunt.netlify.app/
 
 ### CLONING THE APP ###
 
